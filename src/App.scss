@@ -1,49 +1,115 @@
 .container {
   display: grid;
   grid-template-columns: 250px repeat(2, 2fr);
+  position: relative;
 }
 
 .notes__header {
   width: 100%;
-  height: 100px;
-  background-color: aqua;
   position: relative;
   grid-column: 2 / 4;
+  padding: 35px;
+
+  .notes__header-greetings {
+    font-size: 49px;
+    margin: 45px 0 0;
+  }
+
+  .notes__header-form {
+    min-height: 70px;
+    display: flex;
+    gap: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+
+    .search-icon {
+      width: 30px;
+      height: 30px;
+      display: inline;
+      vertical-align: middle;
+      align-self: center;
+      color: #bdbdbd;
+      margin-left: 15px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 5px;
+      min-height: 45px;
+      font-size: 27px;
+      border: none;
+      outline-color: transparent;
+    }
+
+    .form-button {
+      width: 150px;
+      margin-left: auto;
+      background-color: #000;
+      color: #e3d7ff;
+      font-size: 27px;
+      border: none;
+      border-radius: 10px;
+      outline-color: transparent;
+      cursor: pointer;
+
+      &:active {
+        box-shadow: 0px 0px 40px #480dd3;
+      }
+    }
+  }
 }
 
 .notes__color-buttons {
-  min-width: 250px;
-  height: 100vh;
   position: absolute;
-  border-right: 1px solid rgb(189, 189, 189);
   grid-column: 1 / 2;
   grid-row-start: 1;
+  min-width: 250px;
+  height: 100%;
 
-  padding: 30px;
+  border-right: 1px solid #bdbdbd;
+  padding: 35px;
   text-align: center;
 
-  h2 {
-    font-size: 42px;
+  .app-name {
+    font-size: 41px;
     margin-bottom: 30px;
   }
 
-  .favorite-notes {
+  .button-favorite {
+    display: block;
+    margin: 0 auto;
     margin-bottom: 30px;
-  }
-
-  button {
     width: 50px;
     height: 50px;
     cursor: pointer;
     background-color: #000;
-    color: #fff;
+    border-radius: 50%;
+    border: none;
+    outline-color: transparent;
+
+    &:active {
+      box-shadow: 0px 0px 30px #480dd3;
+    }
+  }
+
+  .star-icon {
+    color: #e3d7ff;
+  }
+
+  .button-colors {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #000;
+    color: #e3d7ff;
     font-size: 35px;
     border-radius: 50%;
     margin-bottom: 30px;
-    z-index: 5;
+    border: none;
+    outline-color: transparent;
 
     &:active {
-      box-shadow: 0px 0px 50px rgb(72, 13, 211);
+      box-shadow: 0px 0px 30px #480dd3;
     }
   }
 
@@ -64,6 +130,91 @@
 
 .notes__notes-list {
   width: 100%;
-  background-color: palevioletred;
+  padding: 35px;
   grid-column: 2 / 4;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 45px;
+
+  .note {
+    width: 350px;
+    height: 350px;
+    border: 1px solid #bdbdbd;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+
+    .button-favorite {
+      position: absolute;
+      top: 19px;
+      right: 30px;
+
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-color: #000;
+      border-radius: 50%;
+      border: none;
+      outline-color: transparent;
+
+      &:active {
+        box-shadow: 0px 0px 35px #fff;
+      }
+    }
+
+    .star-icon,
+    .pen-icon {
+      color: #e3d7ff;
+    }
+
+    .edit-note {
+      position: absolute;
+      bottom: 19px;
+      right: 30px;
+
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-color: #000;
+      border-radius: 50%;
+      border: none;
+      outline-color: transparent;
+
+      &:active {
+        box-shadow: 0px 0px 35px #fff;
+      }
+    }
+
+    .note-name {
+      max-width: 230px;
+      min-height: 35px;
+      font-size: 28px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .note-text {
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: pre-wrap;
+
+      max-height: 180px;
+      margin-bottom: 25px;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .note-date {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      font-size: 18px;
+      font-style: italic;
+    }
+  }
 }
