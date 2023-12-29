@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IconContext } from 'react-icons';
 import { FaStar } from 'react-icons/fa6';
+import { colors } from '../../ts/notes-data.ts';
 import './sidebar.scss';
 
 export function Sidebar() {
@@ -26,11 +27,15 @@ export function Sidebar() {
         +
       </button>
       <div className="colors" hidden={openColors}>
-        <span style={{ backgroundColor: '#F8A09F' }} />
-        <span style={{ backgroundColor: '#8158B7' }} />
-        <span style={{ backgroundColor: '#F57F49' }} />
-        <span style={{ backgroundColor: '#BED636' }} />
-        <span style={{ backgroundColor: '#5BC8AF' }} />
+        {colors.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className="color"
+            aria-label="Color"
+            style={{ backgroundColor: `${item.name}` }}
+          />
+        ))}
       </div>
     </div>
   );
