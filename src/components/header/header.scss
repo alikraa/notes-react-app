@@ -1,0 +1,54 @@
+.notes__header {
+  width: 100%;
+  position: relative;
+  grid-column: 2 / 4;
+  padding: 35px;
+
+  .notes__header-greetings {
+    font-size: 49px;
+    margin: 45px 0 0;
+  }
+
+  .notes__header-form {
+    min-height: 70px;
+    display: flex;
+    gap: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+
+    .search-icon {
+      width: 30px;
+      height: 30px;
+      display: inline;
+      vertical-align: middle;
+      align-self: center;
+      color: #bdbdbd;
+      margin-left: 15px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 5px;
+      min-height: 45px;
+      font-size: 27px;
+      border: none;
+      outline-color: transparent;
+    }
+
+    .form-button {
+      width: 150px;
+      margin-left: auto;
+      background-color: #000;
+      color: #e3d7ff;
+      font-size: 27px;
+      border: none;
+      border-radius: 10px;
+      outline-color: transparent;
+      cursor: pointer;
+
+      &:active {
+        box-shadow: 0px 0px 40px #480dd3;
+      }
+    }
+  }
+}

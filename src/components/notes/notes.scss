@@ -1,0 +1,90 @@
+.notes__notes-list {
+  width: 100%;
+  padding: 35px;
+  grid-column: 2 / 4;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 45px;
+
+  .note {
+    width: 350px;
+    height: 350px;
+    border: 1px solid #bdbdbd;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+
+    .button-favorite {
+      position: absolute;
+      top: 19px;
+      right: 30px;
+
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-color: #000;
+      border-radius: 50%;
+      border: none;
+      outline-color: transparent;
+
+      &:active {
+        box-shadow: 0px 0px 35px #fff;
+      }
+    }
+
+    .star-icon,
+    .pen-icon {
+      color: #e3d7ff;
+    }
+
+    .edit-note {
+      position: absolute;
+      bottom: 19px;
+      right: 30px;
+
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-color: #000;
+      border-radius: 50%;
+      border: none;
+      outline-color: transparent;
+
+      &:active {
+        box-shadow: 0px 0px 35px #fff;
+      }
+    }
+
+    .note-name {
+      max-width: 230px;
+      min-height: 35px;
+      font-size: 28px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .note-text {
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: pre-wrap;
+
+      max-height: 180px;
+      margin-bottom: 25px;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .note-date {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      font-size: 18px;
+      font-style: italic;
+    }
+  }
+}

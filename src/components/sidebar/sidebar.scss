@@ -1,0 +1,68 @@
+.notes__color-buttons {
+  position: absolute;
+  grid-column: 1 / 2;
+  grid-row-start: 1;
+  min-width: 250px;
+  height: 100%;
+
+  border-right: 1px solid #bdbdbd;
+  padding: 35px;
+  text-align: center;
+
+  .app-name {
+    font-size: 41px;
+    margin-bottom: 30px;
+  }
+
+  .button-favorite {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #000;
+    border-radius: 50%;
+    border: none;
+    outline-color: transparent;
+
+    &:active {
+      box-shadow: 0px 0px 30px #480dd3;
+    }
+  }
+
+  .star-icon {
+    color: #e3d7ff;
+  }
+
+  .button-colors {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #000;
+    color: #e3d7ff;
+    font-size: 35px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    border: none;
+    outline-color: transparent;
+
+    &:active {
+      box-shadow: 0px 0px 30px #480dd3;
+    }
+  }
+
+  .colors {
+    text-align: center;
+  }
+
+  span,
+  span ~ span {
+    display: block;
+    margin: 0 auto 30px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
