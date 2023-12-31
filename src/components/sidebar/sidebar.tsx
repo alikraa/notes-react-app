@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa6';
 import { colors } from '../../ts/notes-data.ts';
 import './sidebar.scss';
 
-export function Sidebar() {
+export function Sidebar({ handleClick }) {
   const [openColors, setOpenColors] = useState(true);
 
   return (
@@ -34,6 +34,7 @@ export function Sidebar() {
             className="color"
             aria-label="Color"
             style={{ backgroundColor: `${item.name}` }}
+            onClick={handleClick}
           />
         ))}
       </div>
