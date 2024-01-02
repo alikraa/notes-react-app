@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { Header } from './components/header/header.tsx';
 import { Sidebar } from './components/sidebar/sidebar.tsx';
 import { NotesList } from './components/notes/notes-list.tsx';
+import { ModalForm } from './components/modal-form/modal-form.tsx';
 import { notesData } from './ts/notes-data.ts';
 import './style.scss';
 
@@ -34,6 +35,7 @@ function App() {
       <Header />
       <Sidebar handleClick={clickColor} />
       <NotesList notes={notes} />
+      <ModalForm />
     </div>
   );
 }
