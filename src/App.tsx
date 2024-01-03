@@ -9,6 +9,9 @@ import './style.scss';
 
 function App() {
   const [notes, setNotes] = useState(notesData);
+  const [openForm, setOpenForm] = useState(true);
+
+  const [noteId, setNoteId] = useState('');
 
   const addNote = (color: string) => {
     const newNote = {
@@ -30,12 +33,26 @@ function App() {
     addNote(event.currentTarget.style.backgroundColor);
   };
 
+  const openModalForm = () => {
+    setOpenForm(!openForm);
+  };
+
   return (
     <div className="container">
       <Header />
       <Sidebar handleClick={clickColor} />
-      <NotesList notes={notes} />
-      <ModalForm />
+      <NotesList
+        notes={notes}
+        handleClick={openModalForm}
+        setNoteId={setNoteId}
+      />
+      <ModalForm
+        id={noteId}
+        notes={notes}
+        setNotes={setNotes}
+        hidden={openForm}
+        handleClick={openModalForm}
+      />
     </div>
   );
 }

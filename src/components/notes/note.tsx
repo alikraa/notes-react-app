@@ -2,9 +2,14 @@ import { IconContext } from 'react-icons';
 import { FaStar, FaPen } from 'react-icons/fa6';
 import './notes.scss';
 
-export function Note({ note }) {
+export function Note({ note, handleClick, setNoteId }) {
   const { id, colorName, noteName, noteText, noteDate, isFavorites, isEdit } =
     note;
+
+  const editClick = () => {
+    setNoteId(id);
+    handleClick();
+  };
 
   return (
     <div className="note" style={{ backgroundColor: colorName }}>
@@ -26,7 +31,12 @@ export function Note({ note }) {
       )}
       <div className="note-text">{noteText}</div>
       <span className="note-date">{noteDate}</span>
-      <button className="edit-note" type="button" aria-label="Edit Note">
+      <button
+        className="edit-note"
+        type="button"
+        aria-label="Edit Note"
+        onClick={editClick}
+      >
         <IconContext.Provider value={{ className: 'pen-icon', size: '1.2em' }}>
           <FaPen />
         </IconContext.Provider>
