@@ -36,6 +36,11 @@ export function ModalForm({ id, notes, setNotes, hidden, handleClick }) {
     handleClick();
   };
 
+  const deleteNote = () => {
+    setNotes((prev) => prev.filter((item) => item.id !== currentNote.id));
+    handleClick();
+  };
+
   return (
     <div className="wrapper" hidden={hidden}>
       <div className="modal-form">
@@ -54,7 +59,7 @@ export function ModalForm({ id, notes, setNotes, hidden, handleClick }) {
             type="text"
             className="form-input"
             name="input-field"
-            value={currentNote.noteName}
+            value={currentNote?.noteName || ''}
             onChange={(event) =>
               setCurrentNote((prev) => ({
                 ...prev,
@@ -65,7 +70,7 @@ export function ModalForm({ id, notes, setNotes, hidden, handleClick }) {
           <textarea
             className="form-textarea"
             name="text-field"
-            value={currentNote.noteText}
+            value={currentNote?.noteText}
             onChange={(event) =>
               setCurrentNote((prev) => ({
                 ...prev,
@@ -77,7 +82,11 @@ export function ModalForm({ id, notes, setNotes, hidden, handleClick }) {
             Сохранить
           </button>
         </form>
-        <button type="button" className="modal-form__button delete">
+        <button
+          type="button"
+          className="modal-form__button delete"
+          onClick={deleteNote}
+        >
           Удалить заметку
         </button>
       </div>
