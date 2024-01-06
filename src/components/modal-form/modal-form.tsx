@@ -42,7 +42,8 @@ export function ModalForm({ id, notes, setNotes, hidden, handleClick }) {
   };
 
   return (
-    <div className="wrapper" hidden={hidden}>
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div className="wrapper" hidden={hidden} onClick={handleClick}>
       <div className="modal-form">
         <button
           type="button"
