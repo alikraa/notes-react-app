@@ -1,9 +1,8 @@
 .notes__color-buttons {
   position: absolute;
   grid-column: 1 / 2;
-  grid-row-start: 1;
   min-width: 250px;
-  height: 100%;
+  height: inherit;
 
   border-right: 1px solid #bdbdbd;
   padding: 35px;
