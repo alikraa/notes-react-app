@@ -2,48 +2,60 @@ import React, { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { MdOutlineClose } from 'react-icons/md';
 import { findNote } from '../../ts/notes-actions.ts';
+import { changeNote, removeNote } from '../../ts/server-requests.ts';
 import './modal-form.scss';
 
-export function ModalForm({ id, notes, setNotes, hidden, handleClick }) {
+export function ModalForm({ noteId, notes, setNotes, hidden, handleClick }) {
   const [currentNote, setCurrentNote] = useState({
     noteName: '',
     noteText: '',
   });
 
   useEffect(() => {
-    if (id) {
-      const note = findNote(id, notes);
+    if (noteId) {
+      const note = findNote(noteId, notes);
       setCurrentNote(note);
     }
-  }, [id, notes]);
+  }, [noteId, notes]);
 
   const updateNote = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const updatedNote = {
+      noteName: currentNote.noteName,
+      noteText: currentNote.noteText,
+    };
+
     setNotes((prev) =>
       prev.map((item) => {
-        if (item.id === currentNote.id) {
+        if (item.noteId === currentNote.noteId) {
           return {
             ...item,
-            noteName: currentNote.noteName,
-            noteText: currentNote.noteText,
+            ...updatedNote,
           };
         }
         return item;
       })
     );
 
+    changeNote(noteId, updatedNote);
+
     handleClick();
   };
 
   const deleteNote = () => {
-    setNotes((prev) => prev.filter((item) => item.id !== currentNote.id));
     handleClick();
+    setNotes((prev) =>
+      prev.filter((item) => item.noteId !== currentNote.noteId)
+    );
+
+    removeNote(noteId);
   };
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div className="wrapper" hidden={hidden} onClick={handleClick}>
+    // <div className="wrapper" hidden={hidden} onClick={handleClick}>
+    <div className="wrapper" hidden={hidden}>
       <div className="modal-form">
         <button
           type="button"

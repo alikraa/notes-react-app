@@ -12,15 +12,15 @@ function App() {
   const [notes, setNotes] = useState([]);
   const [openForm, setOpenForm] = useState(true);
 
-  const [noteId, setNoteId] = useState('');
+  const [currentNoteId, setCurrentNoteId] = useState('');
 
   useEffect(() => {
     getNotes().then((data) => setNotes(data));
   }, []);
 
-  const addNote = (color: string) => {
+  const addNote = async (color: string) => {
     const newNote = {
-      id: nanoid(),
+      noteId: nanoid(),
       colorName: color,
       noteName: 'Без названия',
       noteText: 'Текст заметки',
@@ -29,9 +29,9 @@ function App() {
       isEdit: false,
     };
 
-    setNotes((prev) => [newNote, ...prev]);
+    await postNote(newNote);
 
-    postNote(newNote);
+    await getNotes().then((data) => setNotes(data));
   };
 
   const clickColor = (
@@ -51,10 +51,10 @@ function App() {
       <NotesList
         notes={notes}
         handleClick={openModalForm}
-        setNoteId={setNoteId}
+        setCurrentNoteId={setCurrentNoteId}
       />
       <ModalForm
-        id={noteId}
+        noteId={currentNoteId}
         notes={notes}
         setNotes={setNotes}
         hidden={openForm}

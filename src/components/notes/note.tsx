@@ -2,12 +2,12 @@ import { IconContext } from 'react-icons';
 import { FaStar, FaPen } from 'react-icons/fa6';
 import './notes.scss';
 
-export function Note({ note, handleClick, setNoteId }) {
+export function Note({ note, handleClick, setCurrentNoteId }) {
   const { id, colorName, noteName, noteText, noteDate, isFavorites, isEdit } =
     note;
 
   const editClick = () => {
-    setNoteId(id);
+    setCurrentNoteId(id);
     handleClick();
   };
 
