@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { MdOutlineClose } from 'react-icons/md';
@@ -53,10 +55,14 @@ export function ModalForm({ noteId, notes, setNotes, hidden, handleClick }) {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    // <div className="wrapper" hidden={hidden} onClick={handleClick}>
-    <div className="wrapper" hidden={hidden}>
-      <div className="modal-form">
+    <div
+      className={hidden ? 'wrapper' : 'wrapper wrapper-active'}
+      onClick={handleClick}
+    >
+      <div
+        className={hidden ? 'modal-form' : 'modal-form active'}
+        onClick={(event) => event.stopPropagation()}
+      >
         <button
           type="button"
           className="modal-form__button close"
