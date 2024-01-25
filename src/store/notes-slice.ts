@@ -1,4 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import {
+  addNewNote,
+  fetchNotes,
+  removeNote,
+} from './notes-slice-async-actions.ts';
 
 export interface Note {
   noteId: string;
@@ -24,6 +29,11 @@ const initialState: InitialState = {
   error: null,
 };
 
+const setError = (state: InitialState, action: PayloadAction<unknown>) => {
+  state.status = 'rejected';
+  state.error = action.payload;
+};
+
 export const notesSlice = createSlice({
   name: 'notes',
   initialState,
@@ -32,8 +42,10 @@ export const notesSlice = createSlice({
       state.notes.unshift(action.payload);
     },
 
-    deleteNote(state, action: PayloadAction<string>) {
-      state.notes.filter((item) => item.noteId !== action.payload);
+    deleteNote(state, action: PayloadAction<Note>) {
+      state.notes = state.notes.filter(
+        (item) => item.noteId !== action.payload.noteId
+      );
     },
 
     updateNote(state, action: PayloadAction<Note>) {
@@ -42,7 +54,7 @@ export const notesSlice = createSlice({
         noteText: action.payload.noteText,
       };
 
-      state.notes.map((item) =>
+      state.notes = state.notes.map((item) =>
         item.noteId === action.payload.noteId
           ? { ...item, ...updatedNote }
           : item
@@ -52,6 +64,24 @@ export const notesSlice = createSlice({
     setCurrentNoteId(state, action: PayloadAction<string>) {
       state.currentNoteId = action.payload;
     },
+  },
+
+  extraReducers(builder) {
+    builder.addCase(fetchNotes.pending, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    });
+    builder.addCase(
+      fetchNotes.fulfilled,
+      (state, action: PayloadAction<Note[]>) => {
+        state.notes = action.payload;
+        state.status = 'fulfilled';
+        state.error = null;
+      }
+    );
+    builder.addCase(fetchNotes.rejected, setError);
+    builder.addCase(addNewNote.rejected, setError);
+    builder.addCase(removeNote.rejected, setError);
   },
 });
 
