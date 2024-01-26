@@ -1,13 +1,17 @@
 import { IconContext } from 'react-icons';
 import { FaStar, FaPen } from 'react-icons/fa6';
+import { useAppDispatch } from '../../store/hooks.ts';
+import { setCurrentNoteId } from '../../store/notes-slice.ts';
 import './notes.scss';
 
-export function Note({ note, handleClick, setCurrentNoteId }) {
+export function Note({ note, handleClick }) {
+  const dispatch = useAppDispatch();
   const { id, colorName, noteName, noteText, noteDate, isFavorites, isEdit } =
     note;
 
   const editClick = () => {
-    setCurrentNoteId(id);
+    dispatch(setCurrentNoteId(id));
+
     handleClick();
   };
 

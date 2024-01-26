@@ -4,54 +4,55 @@ import React, { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { MdOutlineClose } from 'react-icons/md';
 import { findNote } from '../../ts/notes-actions.ts';
-import { changeNote, removeNote } from '../../ts/server-requests.ts';
+import { useAppDispatch, useAppSelector } from '../../store/hooks.ts';
+import { RootState } from '../../store/store.ts';
+import {
+  changeNote,
+  removeNote,
+} from '../../store/notes-slice-async-actions.ts';
 import './modal-form.scss';
 
-export function ModalForm({ noteId, notes, setNotes, hidden, handleClick }) {
+export function ModalForm({ hidden, handleClick }) {
+  const { notes, currentNoteId } = useAppSelector(
+    (state: RootState) => state.notesData
+  );
+  const dispatch = useAppDispatch();
+
   const [currentNote, setCurrentNote] = useState({
+    noteId: '',
+    colorName: '',
     noteName: '',
     noteText: '',
+    noteDate: '',
+    isFavorites: false,
+    isEdit: false,
   });
 
   useEffect(() => {
-    if (noteId) {
-      const note = findNote(noteId, notes);
+    if (currentNoteId) {
+      const note = findNote(currentNoteId, notes);
       setCurrentNote(note);
     }
-  }, [noteId, notes]);
+  }, [currentNoteId, notes]);
 
   const updateNote = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const updatedNote = {
+      ...currentNote,
       noteName: currentNote.noteName,
       noteText: currentNote.noteText,
     };
 
-    setNotes((prev) =>
-      prev.map((item) => {
-        if (item.noteId === currentNote.noteId) {
-          return {
-            ...item,
-            ...updatedNote,
-          };
-        }
-        return item;
-      })
-    );
-
-    changeNote(noteId, updatedNote);
+    dispatch(changeNote({ currentNoteId, updatedNote }));
 
     handleClick();
   };
 
   const deleteNote = () => {
     handleClick();
-    setNotes((prev) =>
-      prev.filter((item) => item.noteId !== currentNote.noteId)
-    );
 
-    removeNote(noteId);
+    dispatch(removeNote(currentNoteId));
   };
 
   return (
