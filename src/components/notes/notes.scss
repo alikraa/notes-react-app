@@ -33,6 +33,14 @@
       }
     }
 
+    .visibility {
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
     .star-icon,
     .pen-icon {
       color: #e3d7ff;

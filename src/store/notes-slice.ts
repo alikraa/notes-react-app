@@ -61,6 +61,14 @@ export const notesSlice = createSlice({
       );
     },
 
+    addFavorites(state, action: PayloadAction<Note>) {
+      state.notes = state.notes.map((item) =>
+        item.noteId === action.payload.noteId
+          ? { ...item, isFavorites: action.payload.isFavorites }
+          : item
+      );
+    },
+
     setCurrentNoteId(state, action: PayloadAction<string>) {
       state.currentNoteId = action.payload;
     },
@@ -85,7 +93,12 @@ export const notesSlice = createSlice({
   },
 });
 
-export const { addNote, deleteNote, updateNote, setCurrentNoteId } =
-  notesSlice.actions;
+export const {
+  addNote,
+  deleteNote,
+  updateNote,
+  addFavorites,
+  setCurrentNoteId,
+} = notesSlice.actions;
 
 export default notesSlice.reducer;

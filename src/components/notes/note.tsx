@@ -2,6 +2,7 @@ import { IconContext } from 'react-icons';
 import { FaStar, FaPen } from 'react-icons/fa6';
 import { useAppDispatch } from '../../store/hooks.ts';
 import { setCurrentNoteId } from '../../store/notes-slice.ts';
+import { setFavorite } from '../../store/notes-slice-async-actions.ts';
 import './notes.scss';
 
 export function Note({ note, handleClick }) {
@@ -15,6 +16,15 @@ export function Note({ note, handleClick }) {
     handleClick();
   };
 
+  const addToFavorite = () => {
+    const updateStatus = {
+      ...note,
+      isFavorites: !isFavorites,
+    };
+
+    dispatch(setFavorite({ id, updateStatus }));
+  };
+
   return (
     <div className="note" style={{ backgroundColor: colorName }}>
       <h3 className="note-name">{noteName}</h3>
@@ -23,6 +33,7 @@ export function Note({ note, handleClick }) {
           className="button-favorite"
           type="button"
           aria-label="Favorite Notes"
+          onClick={addToFavorite}
         >
           <IconContext.Provider
             value={{ className: 'star-icon', size: '1.5em' }}
@@ -31,7 +42,18 @@ export function Note({ note, handleClick }) {
           </IconContext.Provider>
         </button>
       ) : (
-        ''
+        <button
+          className="button-favorite visibility"
+          type="button"
+          aria-label="Favorite Notes"
+          onClick={addToFavorite}
+        >
+          <IconContext.Provider
+            value={{ className: 'star-icon', size: '1.5em' }}
+          >
+            <FaStar />
+          </IconContext.Provider>
+        </button>
       )}
       <div className="note-text">{noteText}</div>
       <span className="note-date">{noteDate}</span>
