@@ -18,6 +18,7 @@ export interface Note {
 interface InitialState {
   notes: Note[];
   currentNoteId: string;
+  searchValue: string;
   status: string;
   error: null | unknown;
 }
@@ -25,6 +26,7 @@ interface InitialState {
 const initialState: InitialState = {
   notes: [],
   currentNoteId: '',
+  searchValue: '',
   status: '',
   error: null,
 };
@@ -72,6 +74,10 @@ export const notesSlice = createSlice({
     setCurrentNoteId(state, action: PayloadAction<string>) {
       state.currentNoteId = action.payload;
     },
+
+    setSearchValue(state, action: PayloadAction<string>) {
+      state.searchValue = action.payload;
+    },
   },
 
   extraReducers(builder) {
@@ -99,6 +105,7 @@ export const {
   updateNote,
   addFavorites,
   setCurrentNoteId,
+  setSearchValue,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
