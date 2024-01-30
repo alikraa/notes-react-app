@@ -17,6 +17,7 @@ export interface Note {
 
 interface InitialState {
   notes: Note[];
+  isFavorite: boolean;
   currentNoteId: string;
   searchValue: string;
   status: string;
@@ -25,6 +26,7 @@ interface InitialState {
 
 const initialState: InitialState = {
   notes: [],
+  isFavorite: false,
   currentNoteId: '',
   searchValue: '',
   status: '',
@@ -78,6 +80,10 @@ export const notesSlice = createSlice({
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
+
+    setIsFavorite(state) {
+      state.isFavorite = !state.isFavorite;
+    },
   },
 
   extraReducers(builder) {
@@ -106,6 +112,7 @@ export const {
   addFavorites,
   setCurrentNoteId,
   setSearchValue,
+  setIsFavorite,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
