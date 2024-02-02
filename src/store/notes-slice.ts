@@ -1,8 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import {
   addNewNote,
+  changeNote,
   fetchNotes,
   removeNote,
+  setFavorite,
 } from './notes-slice-async-actions.ts';
 
 export interface Note {
@@ -17,6 +19,7 @@ export interface Note {
 
 interface InitialState {
   notes: Note[];
+  favoriteNotes: Note[];
   isFavorite: boolean;
   currentNoteId: string;
   searchValue: string;
@@ -26,6 +29,7 @@ interface InitialState {
 
 const initialState: InitialState = {
   notes: [],
+  favoriteNotes: [],
   isFavorite: false,
   currentNoteId: '',
   searchValue: '',
@@ -73,6 +77,10 @@ export const notesSlice = createSlice({
       );
     },
 
+    getFavoriteNotes(state) {
+      state.favoriteNotes = state.notes.filter((item) => item.isFavorites);
+    },
+
     setCurrentNoteId(state, action: PayloadAction<string>) {
       state.currentNoteId = action.payload;
     },
@@ -102,6 +110,8 @@ export const notesSlice = createSlice({
     builder.addCase(fetchNotes.rejected, setError);
     builder.addCase(addNewNote.rejected, setError);
     builder.addCase(removeNote.rejected, setError);
+    builder.addCase(changeNote.rejected, setError);
+    builder.addCase(setFavorite.rejected, setError);
   },
 });
 
@@ -110,6 +120,7 @@ export const {
   deleteNote,
   updateNote,
   addFavorites,
+  getFavoriteNotes,
   setCurrentNoteId,
   setSearchValue,
   setIsFavorite,

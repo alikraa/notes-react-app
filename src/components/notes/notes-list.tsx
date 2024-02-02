@@ -1,16 +1,24 @@
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../store/hooks.ts';
 import { RootState } from '../../store/store.ts';
 import { Note } from './note.tsx';
 import './notes.scss';
 
 export function NotesList({ handleClick }) {
-  const { notes, searchValue } = useAppSelector(
+  const { notes, favoriteNotes, isFavorite, searchValue } = useAppSelector(
     (state: RootState) => state.notesData
   );
 
+  const [currentList, setCurrentList] = useState(notes);
+
+  useEffect(() => {
+    const list = isFavorite ? favoriteNotes : notes;
+    setCurrentList(list);
+  }, [favoriteNotes, isFavorite, notes]);
+
   return (
     <div className="notes__notes-list">
-      {notes
+      {currentList
         .filter(
           (item) =>
             item.noteName.toLowerCase().includes(searchValue) ||

@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa6';
 import { colors } from '../../ts/notes-data.ts';
 import { RootState } from '../../store/store.ts';
 import { useAppDispatch, useAppSelector } from '../../store/hooks.ts';
-import { setIsFavorite } from '../../store/notes-slice.ts';
+import { getFavoriteNotes, setIsFavorite } from '../../store/notes-slice.ts';
 import './sidebar.scss';
 
 export function Sidebar({ handleClick }) {
@@ -20,7 +20,10 @@ export function Sidebar({ handleClick }) {
         className={isFavorite ? 'button-favorite active' : 'button-favorite'}
         type="button"
         aria-label="Favorite Notes"
-        onClick={() => dispatch(setIsFavorite())}
+        onClick={() => {
+          dispatch(setIsFavorite());
+          dispatch(getFavoriteNotes());
+        }}
       >
         <IconContext.Provider value={{ className: 'star-icon', size: '1.5em' }}>
           <FaStar />
