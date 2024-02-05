@@ -10,6 +10,10 @@ export function Note({ note, handleClick }) {
   const { id, colorName, noteName, noteText, noteDate, isFavorites, isEdit } =
     note;
 
+  const date = `${new Date(noteDate)
+    .toLocaleTimeString()
+    .slice(0, 5)}, ${new Date(noteDate).toLocaleDateString()}`;
+
   const editClick = () => {
     dispatch(setCurrentNoteId(id));
 
@@ -56,7 +60,7 @@ export function Note({ note, handleClick }) {
         </button>
       )}
       <div className="note-text">{noteText}</div>
-      <span className="note-date">{noteDate}</span>
+      <span className="note-date">{date}</span>
       <button
         className="edit-note"
         type="button"

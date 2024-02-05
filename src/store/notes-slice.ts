@@ -12,7 +12,7 @@ export interface Note {
   colorName: string;
   noteName: string;
   noteText: string;
-  noteDate: string;
+  noteDate: Date;
   isFavorites: boolean;
   isEdit: boolean;
 }

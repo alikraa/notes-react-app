@@ -43,7 +43,7 @@ export const addNewNote = createAsyncThunk(
         colorName: color,
         noteName: 'Без названия',
         noteText: 'Текст заметки',
-        noteDate: 'Дата',
+        noteDate: new Date(),
         isFavorites: false,
         isEdit: false,
       };
