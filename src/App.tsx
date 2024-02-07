@@ -3,11 +3,14 @@ import { Header } from './components/header/header.tsx';
 import { Sidebar } from './components/sidebar/sidebar.tsx';
 import { NotesList } from './components/notes/notes-list.tsx';
 import { ModalForm } from './components/modal-form/modal-form.tsx';
-import { useAppDispatch } from './store/hooks.ts';
+import { Loader } from './components/loader/loader.tsx';
+import { useAppDispatch, useAppSelector } from './store/hooks.ts';
+import { RootState } from './store/store.ts';
 import { addNewNote, fetchNotes } from './store/notes-slice-async-actions.ts';
 import './style.scss';
 
 function App() {
+  const { status } = useAppSelector((state: RootState) => state.notesData);
   const dispatch = useAppDispatch();
 
   const [openForm, setOpenForm] = useState(true);
@@ -28,6 +31,7 @@ function App() {
 
   return (
     <div className="container">
+      {status === 'loading' && <Loader />}
       <Header />
       <Sidebar handleClick={clickColor} />
       <NotesList handleClick={openModalForm} />
