@@ -24,7 +24,7 @@ interface InitialState {
   currentNoteId: string;
   searchValue: string;
   status: string;
-  error: null | unknown;
+  error: null | unknown | string;
 }
 
 const initialState: InitialState = {
@@ -35,6 +35,16 @@ const initialState: InitialState = {
   searchValue: '',
   status: '',
   error: null,
+};
+
+const setPending = (state: InitialState) => {
+  state.status = 'loading';
+  state.error = null;
+};
+
+const setSuccess = (state: InitialState) => {
+  state.status = 'fulfilled';
+  state.error = null;
 };
 
 const setError = (state: InitialState, action: PayloadAction<unknown>) => {
@@ -108,9 +118,19 @@ export const notesSlice = createSlice({
       }
     );
     builder.addCase(fetchNotes.rejected, setError);
+
+    builder.addCase(addNewNote.pending, setPending);
+    builder.addCase(addNewNote.fulfilled, setSuccess);
     builder.addCase(addNewNote.rejected, setError);
+
+    builder.addCase(removeNote.pending, setPending);
+    builder.addCase(removeNote.fulfilled, setSuccess);
     builder.addCase(removeNote.rejected, setError);
+
+    builder.addCase(changeNote.pending, setPending);
+    builder.addCase(changeNote.fulfilled, setSuccess);
     builder.addCase(changeNote.rejected, setError);
+
     builder.addCase(setFavorite.rejected, setError);
   },
 });
