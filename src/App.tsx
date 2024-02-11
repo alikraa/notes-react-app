@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Header } from './components/header/header.tsx';
 import { Sidebar } from './components/sidebar/sidebar.tsx';
 import { NotesList } from './components/notes/notes-list.tsx';
-import { ModalForm } from './components/modal-form/modal-form.tsx';
+import { ModalWindow } from './components/modal-window/modal-window.tsx';
+import { ModalFormNote } from './components/modal-form-note/modal-form-note.tsx';
 import { Loader } from './components/loader/loader.tsx';
 import { useAppDispatch, useAppSelector } from './store/hooks.ts';
 import { RootState } from './store/store.ts';
@@ -35,7 +36,9 @@ function App() {
       <Header />
       <Sidebar handleClick={clickColor} />
       <NotesList handleClick={openModalForm} />
-      <ModalForm hidden={openForm} handleClick={openModalForm} />
+      <ModalWindow hidden={openForm} handleClick={openModalForm}>
+        <ModalFormNote handleClick={openModalForm} />
+      </ModalWindow>
     </div>
   );
 }
