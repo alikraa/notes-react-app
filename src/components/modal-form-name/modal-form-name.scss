@@ -1,0 +1,37 @@
+.modal-form-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 15px;
+  margin-bottom: 15px;
+
+  input {
+    width: 100%;
+    border: 1px solid #bdbdbd;
+    border-radius: 7px;
+    outline-color: #bdbdbd;
+    min-height: 60px;
+    font-size: 22px;
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    margin-left: auto;
+    background-color: #000;
+    color: #e3d7ff;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    outline-color: transparent;
+    cursor: pointer;
+
+    &:active {
+      box-shadow: 0px 0px 40px #480dd3;
+    }
+  }
+}
