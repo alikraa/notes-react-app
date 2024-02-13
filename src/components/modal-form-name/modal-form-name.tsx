@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { setUserName } from '../../ts/storage.ts';
 import './modal-form-name.scss';
 
 export function ModalFormName({ handleClick }) {
@@ -7,6 +8,7 @@ export function ModalFormName({ handleClick }) {
   const saveUserName = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setUserName(name);
     handleClick();
   };
 
