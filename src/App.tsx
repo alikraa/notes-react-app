@@ -6,6 +6,7 @@ import { ModalWindow } from './components/modal-window/modal-window.tsx';
 import { ModalFormNote } from './components/modal-form-note/modal-form-note.tsx';
 import { ModalFormName } from './components/modal-form-name/modal-form-name.tsx';
 import { Loader } from './components/loader/loader.tsx';
+import { SignIn } from './components/sign-in/sign-in.tsx';
 import { useAppDispatch, useAppSelector } from './store/hooks.ts';
 import { RootState } from './store/store.ts';
 import { addNewNote, fetchNotes } from './store/notes-slice-async-actions.ts';
@@ -54,9 +55,12 @@ function App() {
           </ModalWindow>
         </>
       ) : (
-        <ModalWindow hidden={openForm} handleClick={openModalForm}>
-          <ModalFormName handleClick={openModalForm} />
-        </ModalWindow>
+        <>
+          <SignIn handleClick={openModalForm} />
+          <ModalWindow hidden={openForm} handleClick={openModalForm}>
+            <ModalFormName handleClick={openModalForm} />
+          </ModalWindow>
+        </>
       )}
     </div>
   );
