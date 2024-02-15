@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../store/hooks.ts';
 import { setSearchValue } from '../../store/notes-slice.ts';
 import './header.scss';
 
-export function Header() {
+export function Header({ name }) {
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState('');
@@ -35,7 +35,9 @@ export function Header() {
           Искать!
         </button>
       </form>
-      <h1 className="notes__header-greetings">Привет, userName!</h1>
+      <h1 className="notes__header-greetings">
+        {name ? `Привет, ${name}!` : 'Привет!'}
+      </h1>
     </header>
   );
 }

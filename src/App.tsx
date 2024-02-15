@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="container">
       {status === 'loading' && <Loader />}
-      <Header />
+      <Header name={userName} />
       <Sidebar handleClick={clickColor} />
       {userName ? (
         <>
