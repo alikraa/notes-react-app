@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { setUserName } from '../../ts/storage.ts';
+import { ModalWindowAction } from '../../ts/types.ts';
 import './modal-form-name.scss';
 
-export function ModalFormName({ handleClick }) {
+export function ModalFormName({ handleClick }: ModalWindowAction) {
   const [name, setName] = useState('');
 
   const saveUserName = (event: React.FormEvent<HTMLFormElement>) => {

@@ -6,20 +6,11 @@ import {
   removeNote,
   setFavorite,
 } from './notes-slice-async-actions.ts';
-
-export interface Note {
-  noteId: string;
-  colorName: string;
-  noteName: string;
-  noteText: string;
-  noteDate: Date;
-  isFavorites: boolean;
-  isEdit: boolean;
-}
+import { NoteData } from '../ts/types.ts';
 
 interface InitialState {
-  notes: Note[];
-  favoriteNotes: Note[];
+  notes: NoteData[];
+  favoriteNotes: NoteData[];
   isFavorite: boolean;
   currentNoteId: string;
   searchValue: string;
@@ -56,17 +47,17 @@ export const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    addNote(state, action: PayloadAction<Note>) {
+    addNote(state, action: PayloadAction<NoteData>) {
       state.notes.unshift(action.payload);
     },
 
-    deleteNote(state, action: PayloadAction<Note>) {
+    deleteNote(state, action: PayloadAction<NoteData>) {
       state.notes = state.notes.filter(
         (item) => item.noteId !== action.payload.noteId
       );
     },
 
-    updateNote(state, action: PayloadAction<Note>) {
+    updateNote(state, action: PayloadAction<NoteData>) {
       const updatedNote = {
         noteName: action.payload.noteName,
         noteText: action.payload.noteText,
@@ -79,7 +70,7 @@ export const notesSlice = createSlice({
       );
     },
 
-    addFavorites(state, action: PayloadAction<Note>) {
+    addFavorites(state, action: PayloadAction<NoteData>) {
       state.notes = state.notes.map((item) =>
         item.noteId === action.payload.noteId
           ? { ...item, isFavorites: action.payload.isFavorites }
@@ -111,7 +102,7 @@ export const notesSlice = createSlice({
     });
     builder.addCase(
       fetchNotes.fulfilled,
-      (state, action: PayloadAction<Note[]>) => {
+      (state, action: PayloadAction<NoteData[]>) => {
         state.notes = action.payload;
         state.status = 'fulfilled';
         state.error = null;

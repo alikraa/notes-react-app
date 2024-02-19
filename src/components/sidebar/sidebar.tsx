@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { IconContext } from 'react-icons';
 import { FaStar } from 'react-icons/fa6';
 import { colors } from '../../ts/notes-data.ts';
@@ -7,7 +7,11 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks.ts';
 import { getFavoriteNotes, setIsFavorite } from '../../store/notes-slice.ts';
 import './sidebar.scss';
 
-export function Sidebar({ handleClick }) {
+interface SidebarProps {
+  handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
+
+export function Sidebar({ handleClick }: SidebarProps) {
   const dispatch = useAppDispatch();
   const { isFavorite } = useAppSelector((state: RootState) => state.notesData);
 

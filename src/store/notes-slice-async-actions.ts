@@ -2,21 +2,16 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
 import {
-  Note,
   addFavorites,
   addNote,
   deleteNote,
   updateNote,
 } from './notes-slice.ts';
+import { NoteData } from '../ts/types.ts';
 
 interface Data {
   currentNoteId: string;
-  updatedNote: Note;
-}
-
-interface NoteData {
-  id: string;
-  updateStatus: Note;
+  updatedNote: NoteData;
 }
 
 export const fetchNotes = createAsyncThunk(
@@ -38,7 +33,8 @@ export const addNewNote = createAsyncThunk(
   'notes/addNewNote',
   async (color: string, { rejectWithValue, dispatch }) => {
     try {
-      const newNote: Note = {
+      const newNote: NoteData = {
+        id: '',
         noteId: nanoid(),
         colorName: color,
         noteName: 'Без названия',
@@ -97,12 +93,12 @@ export const changeNote = createAsyncThunk(
 
 export const setFavorite = createAsyncThunk(
   'notes/setFavorite',
-  async (data: NoteData, { rejectWithValue, dispatch }) => {
+  async (data: Data, { rejectWithValue, dispatch }) => {
     try {
-      const { id, updateStatus } = data;
+      const { currentNoteId, updatedNote } = data;
       const response = await axios.put(
-        `https://6599ace3652b843dea530f0b.mockapi.io/notes/${id}`,
-        updateStatus
+        `https://6599ace3652b843dea530f0b.mockapi.io/notes/${currentNoteId}`,
+        updatedNote
       );
 
       dispatch(addFavorites(response.data));

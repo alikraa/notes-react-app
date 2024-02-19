@@ -2,9 +2,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { IconContext } from 'react-icons';
 import { MdOutlineClose } from 'react-icons/md';
+import { ModalWindowProps } from '../../ts/types.ts';
 import './modal-window.scss';
 
-export function ModalWindow({ hidden, handleClick, children }) {
+export function ModalWindow({
+  hidden,
+  handleClick,
+  children,
+}: ModalWindowProps) {
   return (
     <div
       className={hidden ? 'modal-window' : 'modal-window window-active'}

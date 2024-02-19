@@ -55,3 +55,14 @@ export const colors = [
   { id: 4, name: '#BED636' },
   { id: 5, name: '#5BC8AF' },
 ];
+
+export const noteTemplate = {
+  id: '',
+  noteId: '',
+  colorName: '',
+  noteName: '',
+  noteText: '',
+  noteDate: new Date(),
+  isFavorites: false,
+  isEdit: false,
+};

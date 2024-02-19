@@ -5,7 +5,11 @@ import { useAppDispatch } from '../../store/hooks.ts';
 import { setSearchValue } from '../../store/notes-slice.ts';
 import './header.scss';
 
-export function Header({ name }) {
+interface HeaderProps {
+  name: string;
+}
+
+export function Header({ name }: HeaderProps) {
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState('');

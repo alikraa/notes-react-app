@@ -3,9 +3,15 @@ import { FaStar, FaPen } from 'react-icons/fa6';
 import { useAppDispatch } from '../../store/hooks.ts';
 import { setCurrentNoteId } from '../../store/notes-slice.ts';
 import { setFavorite } from '../../store/notes-slice-async-actions.ts';
+import { NoteData } from '../../ts/types.ts';
 import './notes.scss';
 
-export function Note({ note, handleClick }) {
+interface NoteProps {
+  note: NoteData;
+  handleClick: () => void;
+}
+
+export function Note({ note, handleClick }: NoteProps) {
   const dispatch = useAppDispatch();
   const { id, colorName, noteName, noteText, noteDate, isFavorites, isEdit } =
     note;
@@ -21,12 +27,14 @@ export function Note({ note, handleClick }) {
   };
 
   const addToFavorite = () => {
-    const updateStatus = {
+    const updatedNote = {
       ...note,
       isFavorites: !isFavorites,
     };
 
-    dispatch(setFavorite({ id, updateStatus }));
+    const currentNoteId = id;
+
+    dispatch(setFavorite({ currentNoteId, updatedNote }));
   };
 
   return (

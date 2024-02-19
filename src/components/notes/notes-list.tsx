@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../store/hooks.ts';
 import { RootState } from '../../store/store.ts';
 import { Note } from './note.tsx';
+import { ModalWindowAction } from '../../ts/types.ts';
 import './notes.scss';
 
-export function NotesList({ handleClick }) {
+export function NotesList({ handleClick }: ModalWindowAction) {
   const { notes, favoriteNotes, isFavorite, searchValue } = useAppSelector(
     (state: RootState) => state.notesData
   );

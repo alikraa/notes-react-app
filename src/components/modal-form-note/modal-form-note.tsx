@@ -8,28 +8,23 @@ import {
   changeNote,
   removeNote,
 } from '../../store/notes-slice-async-actions.ts';
+import { ModalWindowAction, NoteData } from '../../ts/types.ts';
+import { noteTemplate } from '../../ts/notes-data.ts';
 import './modal-form-note.scss';
 
-export function ModalFormNote({ handleClick }) {
+export function ModalFormNote({ handleClick }: ModalWindowAction) {
   const dispatch = useAppDispatch();
   const { notes, currentNoteId } = useAppSelector(
     (state: RootState) => state.notesData
   );
 
-  const [currentNote, setCurrentNote] = useState({
-    noteId: '',
-    colorName: '',
-    noteName: '',
-    noteText: '',
-    noteDate: '',
-    isFavorites: false,
-    isEdit: false,
-  });
+  const [currentNote, setCurrentNote] = useState<NoteData>(noteTemplate);
 
   useEffect(() => {
     if (currentNoteId) {
       const note = findNote(currentNoteId, notes);
-      setCurrentNote(note);
+      const isNote = note ?? noteTemplate;
+      setCurrentNote(isNote);
     }
   }, [currentNoteId, notes]);
 
