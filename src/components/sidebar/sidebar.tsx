@@ -16,41 +16,60 @@ export function Sidebar({ handleClick }: SidebarProps) {
   const { isFavorite } = useAppSelector((state: RootState) => state.notesData);
 
   const [openColors, setOpenColors] = useState(true);
+  const [clickMenu, setClickMenu] = useState(false);
 
   return (
-    <div className="notes__color-buttons">
-      <h2 className="app-name">Notes</h2>
-      <button
-        className={isFavorite ? 'button-favorite active' : 'button-favorite'}
-        type="button"
-        aria-label="Favorite Notes"
-        onClick={() => {
-          dispatch(setIsFavorite());
-          dispatch(getFavoriteNotes());
-        }}
+    <div className="notes-sidebar">
+      <h2 className="notes-app-name">Notes</h2>
+      <div
+        className={
+          clickMenu
+            ? 'notes-sidebar__buttons notes-sidebar__buttons_active'
+            : 'notes-sidebar__buttons'
+        }
       >
-        <IconContext.Provider value={{ className: 'star-icon', size: '1.5em' }}>
-          <FaStar />
-        </IconContext.Provider>
-      </button>
-      <button
-        type="button"
-        className={openColors ? 'button-colors' : 'button-colors active'}
-        onClick={() => setOpenColors(!openColors)}
-      >
-        +
-      </button>
-      <div className="colors" hidden={openColors}>
-        {colors.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            className="color"
-            aria-label="Color"
-            style={{ backgroundColor: `${item.name}` }}
-            onClick={handleClick}
-          />
-        ))}
+        <button
+          className={
+            isFavorite
+              ? 'notes-sidebar__favorite-button notes-sidebar__favorite-button_active'
+              : 'notes-sidebar__favorite-button'
+          }
+          type="button"
+          aria-label="Favorite Notes"
+          onClick={() => {
+            dispatch(setIsFavorite());
+            dispatch(getFavoriteNotes());
+          }}
+        >
+          <IconContext.Provider
+            value={{ className: 'star-icon', size: '1.5em' }}
+          >
+            <FaStar />
+          </IconContext.Provider>
+        </button>
+        <button
+          type="button"
+          className={
+            openColors
+              ? 'notes-sidebar__color-button'
+              : 'notes-sidebar__color-button notes-sidebar__color-button_active'
+          }
+          onClick={() => setOpenColors(!openColors)}
+        >
+          +
+        </button>
+        <div className="notes-sidebar__colors" hidden={openColors}>
+          {colors.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className="notes-sidebar__colors-item"
+              aria-label="Color"
+              style={{ backgroundColor: `${item.name}` }}
+              onClick={handleClick}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

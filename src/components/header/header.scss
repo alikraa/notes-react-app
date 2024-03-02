@@ -1,15 +1,17 @@
-.notes__header {
+@import './../../mixins.scss';
+
+.notes-header {
   min-height: 260px;
   position: relative;
   grid-column: 2 / 4;
   padding: 35px;
 
-  .notes__header-greetings {
+  .notes-header__greetings {
     font-size: 49px;
     margin: 45px 0 0;
   }
 
-  .notes__header-form {
+  .notes-header__form {
     min-height: 70px;
     display: flex;
     gap: 10px;
@@ -26,7 +28,7 @@
       margin-left: 15px;
     }
 
-    .form-input {
+    .notes-header__form__input {
       width: 100%;
       padding: 5px;
       min-height: 45px;
@@ -35,20 +37,11 @@
       outline-color: transparent;
     }
 
-    .form-button {
+    .notes-header__form__button {
+      @include appButton(27px);
+
       width: 150px;
       margin-left: auto;
-      background-color: #000;
-      color: #e3d7ff;
-      font-size: 27px;
-      border: none;
-      border-radius: 10px;
-      outline-color: transparent;
-      cursor: pointer;
-
-      &:active {
-        box-shadow: 0px 0px 40px #480dd3;
-      }
     }
   }
 }

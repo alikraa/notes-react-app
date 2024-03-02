@@ -38,11 +38,11 @@ export function Note({ note, handleClick }: NoteProps) {
   };
 
   return (
-    <div className="note" style={{ backgroundColor: colorName }}>
-      <h3 className="note-name">{noteName}</h3>
+    <div className="notes-note" style={{ backgroundColor: colorName }}>
+      <h3 className="notes-note__name">{noteName}</h3>
       {isFavorites ? (
         <button
-          className="button-favorite"
+          className="notes-note__favorite-button"
           type="button"
           aria-label="Favorite Notes"
           onClick={addToFavorite}
@@ -55,7 +55,7 @@ export function Note({ note, handleClick }: NoteProps) {
         </button>
       ) : (
         <button
-          className="button-favorite visibility"
+          className="notes-note__favorite-button notes-note__favorite-button_visibility"
           type="button"
           aria-label="Favorite Notes"
           onClick={addToFavorite}
@@ -67,10 +67,10 @@ export function Note({ note, handleClick }: NoteProps) {
           </IconContext.Provider>
         </button>
       )}
-      <div className="note-text">{noteText}</div>
-      <span className="note-date">{date}</span>
+      <div className="notes-note__text">{noteText}</div>
+      <span className="notes-note__date">{date}</span>
       <button
-        className="edit-note"
+        className="notes-note__edit-button"
         type="button"
         aria-label="Edit Note"
         onClick={editClick}

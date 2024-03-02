@@ -21,25 +21,25 @@ export function Header({ name }: HeaderProps) {
   };
 
   return (
-    <header className="notes__header">
-      <form className="notes__header-form" onSubmit={handleSubmit}>
+    <header className="notes-header">
+      <form className="notes-header__form" onSubmit={handleSubmit}>
         <IconContext.Provider value={{ className: 'search-icon' }}>
           <RiSearchLine />
         </IconContext.Provider>
         <input
           type="search"
-          className="form-input"
+          className="notes-header__form__input"
           placeholder="Поиск"
           onChange={(event) => {
             setValue(event.target.value.toLowerCase());
             dispatch(setSearchValue(event.target.value.toLowerCase()));
           }}
         />
-        <button type="submit" className="form-button">
+        <button type="submit" className="notes-header__form__button">
           Искать!
         </button>
       </form>
-      <h1 className="notes__header-greetings">
+      <h1 className="notes-header__greetings">
         {name ? `Привет, ${name}!` : 'Привет!'}
       </h1>
     </header>

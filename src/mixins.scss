@@ -1,0 +1,44 @@
+@mixin appButtonCircle {
+  width: 50px;
+  height: 50px;
+}
+
+@mixin appButton($font-size, $border-radius: 10px) {
+  background-color: #000;
+  color: #e3d7ff;
+  border: none;
+  border-radius: $border-radius;
+  font-size: $font-size;
+  outline-color: transparent;
+  cursor: pointer;
+
+  &:active {
+    box-shadow: 0px 0px 40px #480dd3;
+  }
+}
+
+@mixin noteButton {
+  @include appButtonCircle;
+  @include appButton(_, 50%);
+
+  position: absolute;
+  right: 30px;
+
+  &:active {
+    box-shadow: 0px 0px 35px #fff;
+  }
+}
+
+@mixin modalWrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

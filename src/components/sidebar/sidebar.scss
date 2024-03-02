@@ -1,4 +1,6 @@
-.notes__color-buttons {
+@import './../../mixins.scss';
+
+.notes-sidebar {
   position: absolute;
   grid-column: 1 / 2;
   min-width: 250px;
@@ -8,54 +10,32 @@
   padding: 35px;
   text-align: center;
 
-  .app-name {
+  .notes-app-name {
     font-size: 41px;
     margin-bottom: 30px;
+    line-height: 1.5;
   }
 
-  .button-favorite {
+  .notes-sidebar__favorite-button {
+    @include appButtonCircle;
+    @include appButton(_, 50%);
     display: block;
     margin: 0 auto;
     margin-bottom: 30px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    background-color: #000;
-    border-radius: 50%;
-    border: none;
-    outline-color: transparent;
-
-    &:active {
-      box-shadow: 0px 0px 30px #480dd3;
-    }
   }
 
-  .star-icon {
-    color: #e3d7ff;
-  }
+  .notes-sidebar__color-button {
+    @include appButtonCircle;
+    @include appButton(35px, 50%);
 
-  .button-colors {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    background-color: #000;
-    color: #e3d7ff;
-    font-size: 35px;
-    border-radius: 50%;
     margin-bottom: 30px;
-    border: none;
-    outline-color: transparent;
-
-    &:active {
-      box-shadow: 0px 0px 30px #480dd3;
-    }
   }
 
-  .colors {
+  .notes-sidebar__colors {
     text-align: center;
   }
 
-  .color {
+  .notes-sidebar__colors-item {
     display: block;
     margin: 0 auto 30px;
     width: 25px;
@@ -66,7 +46,8 @@
     outline-color: transparent;
   }
 
-  .active {
+  .notes-sidebar__favorite-button_active,
+  .notes-sidebar__color-button_active {
     background-color: #fff;
     border: 2px solid #996dff;
   }

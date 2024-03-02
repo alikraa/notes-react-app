@@ -1,13 +1,16 @@
-.notes__notes-list {
+@import './../../mixins.scss';
+
+.notes-list {
   min-height: 75vh;
-  padding: 35px;
+  padding: 35px 0;
   grid-column: 2 / 4;
 
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 45px;
 
-  .note {
+  .notes-note {
     width: 350px;
     height: 350px;
     border: 1px solid #bdbdbd;
@@ -15,25 +18,13 @@
     padding: 30px;
     position: relative;
 
-    .button-favorite {
-      position: absolute;
+    .notes-note__favorite-button {
+      @include noteButton;
+
       top: 19px;
-      right: 30px;
-
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      background-color: #000;
-      border-radius: 50%;
-      border: none;
-      outline-color: transparent;
-
-      &:active {
-        box-shadow: 0px 0px 35px #fff;
-      }
     }
 
-    .visibility {
+    .notes-note__favorite-button_visibility {
       opacity: 0;
 
       &:hover {
@@ -46,25 +37,13 @@
       color: #e3d7ff;
     }
 
-    .edit-note {
-      position: absolute;
+    .notes-note__edit-button {
+      @include noteButton;
+
       bottom: 19px;
-      right: 30px;
-
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      background-color: #000;
-      border-radius: 50%;
-      border: none;
-      outline-color: transparent;
-
-      &:active {
-        box-shadow: 0px 0px 35px #fff;
-      }
     }
 
-    .note-name {
+    .notes-note__name {
       max-width: 230px;
       min-height: 35px;
       font-size: 28px;
@@ -74,10 +53,10 @@
       margin-bottom: 25px;
     }
 
-    .note-text {
-      display: -webkit-box;
-      -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical;
+    .notes-note__text {
+      display: -webkit-box; // display: flex
+      -webkit-line-clamp: 6; // количество строк
+      -webkit-box-orient: vertical; // flex-direction: column
       overflow: hidden;
       white-space: pre-wrap;
 
@@ -85,9 +64,10 @@
       margin-bottom: 25px;
       font-size: 20px;
       line-height: 1.5;
+      cursor: pointer;
     }
 
-    .note-date {
+    .notes-note__date {
       position: absolute;
       bottom: 30px;
       left: 30px;

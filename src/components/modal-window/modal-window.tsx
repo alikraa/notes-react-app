@@ -12,18 +12,20 @@ export function ModalWindow({
 }: ModalWindowProps) {
   return (
     <div
-      className={hidden ? 'modal-window' : 'modal-window window-active'}
+      className={hidden ? 'modal-window' : 'modal-window modal-window_active'}
       onClick={handleClick}
     >
       <div
         className={
-          hidden ? 'content-wrapper' : 'content-wrapper wrapper-active'
+          hidden
+            ? 'modal-window__content'
+            : 'modal-window__content modal-window__content_active'
         }
         onClick={(event) => event.stopPropagation()}
       >
         <button
           type="button"
-          className="button close"
+          className="modal-window__button"
           aria-label="Close"
           onClick={handleClick}
         >

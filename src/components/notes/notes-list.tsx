@@ -6,9 +6,8 @@ import { ModalWindowAction } from '../../ts/types.ts';
 import './notes.scss';
 
 export function NotesList({ handleClick }: ModalWindowAction) {
-  const { notes, favoriteNotes, isFavorite, searchValue } = useAppSelector(
-    (state: RootState) => state.notesData
-  );
+  const { notes, favoriteNotes, isFavorite, searchValue, error } =
+    useAppSelector((state: RootState) => state.notesData);
 
   const [currentList, setCurrentList] = useState(notes);
 
@@ -18,7 +17,8 @@ export function NotesList({ handleClick }: ModalWindowAction) {
   }, [favoriteNotes, isFavorite, notes]);
 
   return (
-    <div className="notes__notes-list">
+    <div className="notes-list">
+      {error !== null && <h2>Что-то пошло не так: {String(error)}</h2>}
       {currentList
         .filter(
           (item) =>

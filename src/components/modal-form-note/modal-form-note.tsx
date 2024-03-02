@@ -49,11 +49,11 @@ export function ModalFormNote({ handleClick }: ModalWindowAction) {
   };
 
   return (
-    <>
-      <form className="modal-form-note" onSubmit={updateNote}>
+    <div className="modal-form-note">
+      <form className="modal-form-note__form" onSubmit={updateNote}>
         <input
           type="text"
-          className="input"
+          className="modal-form-note__form__input"
           name="input-field"
           value={currentNote?.noteName || ''}
           onChange={(event) =>
@@ -64,7 +64,7 @@ export function ModalFormNote({ handleClick }: ModalWindowAction) {
           }
         />
         <textarea
-          className="textarea"
+          className="modal-form-note__form__textarea"
           name="text-field"
           value={currentNote?.noteText}
           onChange={(event) =>
@@ -74,13 +74,17 @@ export function ModalFormNote({ handleClick }: ModalWindowAction) {
             }))
           }
         />
-        <button type="submit" className="button">
+        <button type="submit" className="modal-form-note__form__button">
           Сохранить
         </button>
       </form>
-      <button type="button" className="button delete" onClick={deleteNote}>
+      <button
+        type="button"
+        className="modal-form-note__form__button delete"
+        onClick={deleteNote}
+      >
         Удалить заметку
       </button>
-    </>
+    </div>
   );
 }

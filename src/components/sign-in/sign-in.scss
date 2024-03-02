@@ -1,3 +1,5 @@
+@import './../../mixins.scss';
+
 .sign-in {
   min-height: 75vh;
   padding: 35px;
@@ -8,21 +10,11 @@
   display: flex;
   justify-content: center;
 
-  .button {
+  .sign-in__button {
+    @include appButton(35px);
+
     width: 220px;
     height: 90px;
     padding: 10px;
-    background-color: #000;
-    color: #e3d7ff;
-    font-size: 35px;
-    border: none;
-    border-radius: 10px;
-    outline-color: transparent;
-    cursor: pointer;
-    margin-bottom: 15px;
-
-    &:active {
-      box-shadow: 0px 0px 40px #480dd3;
-    }
   }
 }
