@@ -10,18 +10,43 @@
   padding: 35px;
   text-align: center;
 
+  .notes-sidebar__menu-button {
+    width: 30px;
+    height: 20px;
+    margin-top: 10px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+
+    display: none;
+
+    span {
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+    }
+  }
+
   .notes-app-name {
     font-size: 41px;
     margin-bottom: 30px;
     line-height: 1.5;
   }
 
-  .notes-sidebar__favorite-button {
+  .notes-sidebar__favorite-button,
+  .notes-sidebar__sign-out-button {
     @include appButtonCircle;
     @include appButton(_, 50%);
     display: block;
     margin: 0 auto;
     margin-bottom: 30px;
+  }
+
+  .sign-out-icon {
+    vertical-align: sub;
   }
 
   .notes-sidebar__color-button {

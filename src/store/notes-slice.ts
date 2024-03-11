@@ -9,6 +9,7 @@ import {
 import { NoteData } from '../ts/types.ts';
 
 interface InitialState {
+  userName: string;
   notes: NoteData[];
   favoriteNotes: NoteData[];
   isFavorite: boolean;
@@ -19,6 +20,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
+  userName: '',
   notes: [],
   favoriteNotes: [],
   isFavorite: false,
@@ -47,6 +49,10 @@ export const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
+    setNameOfUser(state, action: PayloadAction<string>) {
+      state.userName = action.payload;
+    },
+
     addNote(state, action: PayloadAction<NoteData>) {
       state.notes.unshift(action.payload);
     },
@@ -127,6 +133,7 @@ export const notesSlice = createSlice({
 });
 
 export const {
+  setNameOfUser,
   addNote,
   deleteNote,
   updateNote,

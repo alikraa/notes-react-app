@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { setUserName } from '../../ts/storage.ts';
 import { ModalWindowAction } from '../../ts/types.ts';
+import { useAppDispatch } from '../../store/hooks.ts';
+import { setNameOfUser } from '../../store/notes-slice.ts';
 import './modal-form-name.scss';
 
 export function ModalFormName({ handleClick }: ModalWindowAction) {
+  const dispatch = useAppDispatch();
   const [name, setName] = useState('');
 
   const saveUserName = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setUserName(name);
+    dispatch(setNameOfUser(name));
     handleClick();
   };
 

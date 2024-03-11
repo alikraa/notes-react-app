@@ -10,15 +10,18 @@ import { SignIn } from './components/sign-in/sign-in.tsx';
 import { useAppDispatch, useAppSelector } from './store/hooks.ts';
 import { RootState } from './store/store.ts';
 import { addNewNote, fetchNotes } from './store/notes-slice-async-actions.ts';
+import { setNameOfUser } from './store/notes-slice.ts';
 import { getUserName } from './ts/storage.ts';
 import './style.scss';
 
 function App() {
-  const { status } = useAppSelector((state: RootState) => state.notesData);
+  const { userName, status } = useAppSelector(
+    (state: RootState) => state.notesData
+  );
   const dispatch = useAppDispatch();
 
   const [openForm, setOpenForm] = useState(true);
-  const [userName, setUserName] = useState('');
+  // const [userName, setUserName] = useState('');
 
   useEffect(() => {
     dispatch(fetchNotes());
@@ -28,9 +31,9 @@ function App() {
     const name = getUserName();
 
     if (name) {
-      setUserName(name);
+      dispatch(setNameOfUser(name));
     }
-  }, [userName]);
+  });
 
   const clickColor = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>

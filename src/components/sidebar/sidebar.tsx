@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { IconContext } from 'react-icons';
 import { FaStar } from 'react-icons/fa6';
+import { PiSignOutBold } from 'react-icons/pi';
 import { colors } from '../../ts/notes-data.ts';
 import { RootState } from '../../store/store.ts';
 import { useAppDispatch, useAppSelector } from '../../store/hooks.ts';
-import { getFavoriteNotes, setIsFavorite } from '../../store/notes-slice.ts';
+import {
+  getFavoriteNotes,
+  setIsFavorite,
+  setNameOfUser,
+} from '../../store/notes-slice.ts';
 import './sidebar.scss';
 
 interface SidebarProps {
@@ -13,7 +18,9 @@ interface SidebarProps {
 
 export function Sidebar({ handleClick }: SidebarProps) {
   const dispatch = useAppDispatch();
-  const { isFavorite } = useAppSelector((state: RootState) => state.notesData);
+  const { userName, isFavorite } = useAppSelector(
+    (state: RootState) => state.notesData
+  );
 
   const [openColors, setOpenColors] = useState(true);
   const [clickMenu, setClickMenu] = useState(false);
@@ -70,7 +77,40 @@ export function Sidebar({ handleClick }: SidebarProps) {
             />
           ))}
         </div>
+        {userName ? (
+          <button
+            type="button"
+            className="notes-sidebar__sign-out-button"
+            aria-label="Sign Out"
+            onClick={() => {
+              localStorage.removeItem('userName');
+              dispatch(setNameOfUser(''));
+            }}
+          >
+            <IconContext.Provider
+              value={{ className: 'sign-out-icon', size: '1.5em' }}
+            >
+              <PiSignOutBold />
+            </IconContext.Provider>
+          </button>
+        ) : (
+          ''
+        )}
       </div>
+      <button
+        className={
+          clickMenu
+            ? 'notes-sidebar__menu-button notes-sidebar__menu-button_active'
+            : 'notes-sidebar__menu-button'
+        }
+        type="button"
+        aria-label="Menu"
+        onClick={() => setClickMenu(!clickMenu)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
     </div>
   );
 }
