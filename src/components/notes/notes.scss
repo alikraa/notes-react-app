@@ -1,9 +1,7 @@
 @import './../../mixins.scss';
 
 .notes-list {
-  min-height: 75vh;
-  padding: 35px 0;
-  grid-column: 2 / 4;
+  @include mainContent;
 
   display: grid;
   justify-items: center;
@@ -73,6 +71,54 @@
       left: 30px;
       font-size: 18px;
       font-style: italic;
+    }
+  }
+}
+
+.notes-note-details {
+  @include mainContent;
+
+  padding: 35px;
+
+  .notes-note-details__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    .notes-note-details__back-button,
+    .notes-note-details__edit-button {
+      @include appButton(_);
+
+      height: 50px;
+      width: 100px;
+    }
+  }
+
+  .notes-note-details__note {
+    display: flex;
+    flex-direction: column;
+
+    .notes-note-details__note__name {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .notes-note-details__note__name,
+    .notes-note-details__note__date {
+      text-align: center;
+    }
+
+    .notes-note-details__note__date {
+      font-style: italic;
+      font-size: 20px;
+      margin-bottom: 45px;
+    }
+
+    .notes-note-details__note__text {
+      font-size: 25px;
+      word-break: break-all;
+      white-space: pre-wrap;
+      line-height: 1.3;
     }
   }
 }

@@ -42,3 +42,9 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin mainContent {
+  min-height: 75vh;
+  padding: 35px 0;
+  grid-column: 2 / 4;
+}
