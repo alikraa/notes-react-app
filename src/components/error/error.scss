@@ -1,0 +1,26 @@
+@import './../../mixins.scss';
+
+.error-message {
+  @include mainContent;
+  min-height: 5vh;
+  padding: 0 35px;
+}
+
+@media (max-width: 995px) {
+  .error-message {
+    padding: 0 20px;
+    grid-column-start: 1;
+  }
+}
+
+@media (max-width: 650px) {
+  .error-message {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .error-message {
+    font-size: 22px;
+  }
+}
