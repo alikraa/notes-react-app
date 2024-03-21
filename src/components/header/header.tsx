@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { RiSearchLine } from 'react-icons/ri';
-import { useAppDispatch } from '../../store/hooks.ts';
+import { useAppDispatch, useAppSelector } from '../../store/hooks.ts';
 import { setSearchValue } from '../../store/notes-slice.ts';
+import { RootState } from '../../store/store.ts';
 import './header.scss';
 
-interface HeaderProps {
-  name: string;
-}
-
-export function Header({ name }: HeaderProps) {
+export function Header() {
+  const { userName } = useAppSelector((state: RootState) => state.notesData);
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState('');
+
+  const searchIconStyle = useMemo(() => ({ className: 'search-icon' }), []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,7 +23,7 @@ export function Header({ name }: HeaderProps) {
   return (
     <header className="notes-header">
       <form className="notes-header__form" onSubmit={handleSubmit}>
-        <IconContext.Provider value={{ className: 'search-icon' }}>
+        <IconContext.Provider value={searchIconStyle}>
           <RiSearchLine />
         </IconContext.Provider>
         <input
@@ -40,7 +40,7 @@ export function Header({ name }: HeaderProps) {
         </button>
       </form>
       <h1 className="notes-header__greetings">
-        {name ? `Привет, ${name}!` : 'Привет!'}
+        {userName ? `Привет, ${userName}!` : 'Привет!'}
       </h1>
     </header>
   );

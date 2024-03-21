@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 import { FaStar, FaPen } from 'react-icons/fa6';
-import { useAppDispatch } from '../../store/hooks.ts';
+import { Link } from 'react-router-dom';
 import { setCurrentNoteId } from '../../store/notes-slice.ts';
+import { useAppDispatch } from '../../store/hooks.ts';
 import { setFavorite } from '../../store/notes-slice-async-actions.ts';
 import { NoteData } from '../../ts/types.ts';
 import './notes.scss';
@@ -16,12 +18,23 @@ export function Note({ note, handleClick }: NoteProps) {
   const { id, colorName, noteName, noteText, noteDate, isFavorites, isEdit } =
     note;
 
+  const starIconStyle = useMemo(
+    () => ({ className: 'star-icon', size: '1.5em' }),
+    []
+  );
+  const penIconStyle = useMemo(
+    () => ({ className: 'star-icon', size: '1.5em' }),
+    []
+  );
+
   const date = `${new Date(noteDate)
     .toLocaleTimeString()
     .slice(0, 5)}, ${new Date(noteDate).toLocaleDateString()}`;
 
+  const setNoteId = () => dispatch(setCurrentNoteId(id));
+
   const editClick = () => {
-    dispatch(setCurrentNoteId(id));
+    setNoteId();
 
     handleClick();
   };
@@ -47,9 +60,7 @@ export function Note({ note, handleClick }: NoteProps) {
           aria-label="Favorite Notes"
           onClick={addToFavorite}
         >
-          <IconContext.Provider
-            value={{ className: 'star-icon', size: '1.5em' }}
-          >
+          <IconContext.Provider value={starIconStyle}>
             <FaStar />
           </IconContext.Provider>
         </button>
@@ -60,14 +71,18 @@ export function Note({ note, handleClick }: NoteProps) {
           aria-label="Favorite Notes"
           onClick={addToFavorite}
         >
-          <IconContext.Provider
-            value={{ className: 'star-icon', size: '1.5em' }}
-          >
+          <IconContext.Provider value={starIconStyle}>
             <FaStar />
           </IconContext.Provider>
         </button>
       )}
-      <div className="notes-note__text">{noteText}</div>
+      <Link
+        to={`/notes/${id}`}
+        style={{ textDecoration: 'none', color: '#000' }}
+        onClick={setNoteId}
+      >
+        <div className="notes-note__text">{noteText}</div>
+      </Link>
       <span className="notes-note__date">{date}</span>
       <button
         className="notes-note__edit-button"
@@ -75,7 +90,7 @@ export function Note({ note, handleClick }: NoteProps) {
         aria-label="Edit Note"
         onClick={editClick}
       >
-        <IconContext.Provider value={{ className: 'pen-icon', size: '1.2em' }}>
+        <IconContext.Provider value={penIconStyle}>
           <FaPen />
         </IconContext.Provider>
       </button>
