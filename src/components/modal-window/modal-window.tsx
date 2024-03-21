@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 import { MdOutlineClose } from 'react-icons/md';
 import { ModalWindowProps } from '../../ts/types.ts';
@@ -10,6 +11,7 @@ export function ModalWindow({
   handleClick,
   children,
 }: ModalWindowProps) {
+  const closeIconStyle = useMemo(() => ({ size: '1.5em' }), []);
   return (
     <div
       className={hidden ? 'modal-window' : 'modal-window modal-window_active'}
@@ -29,7 +31,7 @@ export function ModalWindow({
           aria-label="Close"
           onClick={handleClick}
         >
-          <IconContext.Provider value={{ size: '1.5em' }}>
+          <IconContext.Provider value={closeIconStyle}>
             <MdOutlineClose />
           </IconContext.Provider>
         </button>

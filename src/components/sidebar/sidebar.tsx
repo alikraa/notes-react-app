@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { FaStar } from 'react-icons/fa6';
 import { PiSignOutBold } from 'react-icons/pi';
@@ -25,6 +25,15 @@ export function Sidebar({ handleClick }: SidebarProps) {
   const [openColors, setOpenColors] = useState(true);
   const [clickMenu, setClickMenu] = useState(false);
 
+  const starIconStyle = useMemo(
+    () => ({ className: 'star-icon', size: '1.5em' }),
+    []
+  );
+  const signOutIconStyle = useMemo(
+    () => ({ className: 'sign-out-icon', size: '1.5em' }),
+    []
+  );
+
   return (
     <div className="notes-sidebar">
       <h2 className="notes-app-name">Notes</h2>
@@ -48,9 +57,7 @@ export function Sidebar({ handleClick }: SidebarProps) {
             dispatch(getFavoriteNotes());
           }}
         >
-          <IconContext.Provider
-            value={{ className: 'star-icon', size: '1.5em' }}
-          >
+          <IconContext.Provider value={starIconStyle}>
             <FaStar />
           </IconContext.Provider>
         </button>
@@ -87,9 +94,7 @@ export function Sidebar({ handleClick }: SidebarProps) {
               dispatch(setNameOfUser(''));
             }}
           >
-            <IconContext.Provider
-              value={{ className: 'sign-out-icon', size: '1.5em' }}
-            >
+            <IconContext.Provider value={signOutIconStyle}>
               <PiSignOutBold />
             </IconContext.Provider>
           </button>

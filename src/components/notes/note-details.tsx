@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { FaPen } from 'react-icons/fa6';
@@ -19,6 +19,15 @@ export function NoteDetails() {
 
   const [note, setNote] = useState(noteTemplate);
   const [openForm, setOpenForm] = useState(true);
+
+  const arrowIconStyle = useMemo(
+    () => ({ className: 'arrow-icon', size: '3em' }),
+    []
+  );
+  const pencilIconStyle = useMemo(
+    () => ({ className: 'pencil-icon', size: '1.7em' }),
+    []
+  );
 
   useEffect(() => {
     if (currentNoteId) {
@@ -52,9 +61,7 @@ export function NoteDetails() {
           className="notes-note-details__back-button"
           onClick={() => navigate(-1)}
         >
-          <IconContext.Provider
-            value={{ className: 'arrow-icon', size: '3em' }}
-          >
+          <IconContext.Provider value={arrowIconStyle}>
             <MdKeyboardBackspace />
           </IconContext.Provider>
         </button>
@@ -65,9 +72,7 @@ export function NoteDetails() {
           aria-label="Edit Note"
           onClick={openModalForm}
         >
-          <IconContext.Provider
-            value={{ className: 'pencil-icon', size: '1.7em' }}
-          >
+          <IconContext.Provider value={pencilIconStyle}>
             <FaPen />
           </IconContext.Provider>
         </button>
