@@ -8,6 +8,7 @@ import { getUserName } from './ts/storage.ts';
 import { useAppDispatch, useAppSelector } from './store/hooks.ts';
 import { addNewNote, fetchNotes } from './store/notes-slice-async-actions.ts';
 import { setNameOfUser } from './store/notes-slice.ts';
+import { loading } from './ts/notes-data.ts';
 import './style.scss';
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
 
   return (
     <div className="container">
-      {status === 'loading' && <Loader />}
+      {status === loading && <Loader />}
       <Header />
       <Sidebar handleClick={clickColor} />
       <Outlet />

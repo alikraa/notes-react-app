@@ -8,6 +8,7 @@ import {
   updateNote,
 } from './notes-slice.ts';
 import { NoteData } from '../ts/types.ts';
+import { templateName, templateText } from '../ts/notes-data.ts';
 
 interface Data {
   currentNoteId: string;
@@ -37,8 +38,8 @@ export const addNewNote = createAsyncThunk(
         id: '',
         noteId: nanoid(),
         colorName: color,
-        noteName: 'Без названия',
-        noteText: 'Текст заметки',
+        noteName: templateName,
+        noteText: templateText,
         noteDate: new Date(),
         isFavorites: false,
         isEdit: false,

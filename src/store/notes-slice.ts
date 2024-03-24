@@ -7,6 +7,7 @@ import {
   setFavorite,
 } from './notes-slice-async-actions.ts';
 import { NoteData } from '../ts/types.ts';
+import { fulfilled, loading, rejected } from '../ts/notes-data.ts';
 
 interface InitialState {
   userName: string;
@@ -31,17 +32,17 @@ const initialState: InitialState = {
 };
 
 const setPending = (state: InitialState) => {
-  state.status = 'loading';
+  state.status = loading;
   state.error = null;
 };
 
 const setSuccess = (state: InitialState) => {
-  state.status = 'fulfilled';
+  state.status = fulfilled;
   state.error = null;
 };
 
 const setError = (state: InitialState, action: PayloadAction<unknown>) => {
-  state.status = 'rejected';
+  state.status = rejected;
   state.error = action.payload;
 };
 
@@ -103,14 +104,14 @@ export const notesSlice = createSlice({
 
   extraReducers(builder) {
     builder.addCase(fetchNotes.pending, (state) => {
-      state.status = 'loading';
+      state.status = loading;
       state.error = null;
     });
     builder.addCase(
       fetchNotes.fulfilled,
       (state, action: PayloadAction<NoteData[]>) => {
         state.notes = action.payload;
-        state.status = 'fulfilled';
+        state.status = fulfilled;
         state.error = null;
       }
     );

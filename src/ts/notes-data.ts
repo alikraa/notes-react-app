@@ -4,8 +4,8 @@ export const notesData = [
   {
     id: nanoid(),
     colorName: '#F8A09F',
-    noteName: 'Без названия',
-    noteText: 'Текст заметки',
+    noteName: 'Name',
+    noteText: 'Text',
     noteDate: 'Дата',
     isFavorites: true,
     isEdit: false,
@@ -66,3 +66,10 @@ export const noteTemplate = {
   isFavorites: false,
   isEdit: false,
 };
+
+export const templateName = 'Без названия';
+export const templateText = 'Текст заметки';
+
+export const loading = 'loading';
+export const fulfilled = 'fulfilled';
+export const rejected = 'rejected';
