@@ -62,6 +62,10 @@ export const notesSlice = createSlice({
       state.notes = state.notes.filter(
         (item) => item.noteId !== action.payload.noteId
       );
+
+      state.favoriteNotes = state.favoriteNotes.filter(
+        (item) => item.noteId !== action.payload.noteId
+      );
     },
 
     updateNote(state, action: PayloadAction<NoteData>) {
@@ -83,6 +87,8 @@ export const notesSlice = createSlice({
           ? { ...item, isFavorites: action.payload.isFavorites }
           : item
       );
+
+      state.favoriteNotes = state.notes.filter((item) => item.isFavorites);
     },
 
     getFavoriteNotes(state) {
