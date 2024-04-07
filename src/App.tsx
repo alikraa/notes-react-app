@@ -4,7 +4,7 @@ import { Header } from './components/header/header.tsx';
 import { Sidebar } from './components/sidebar/sidebar.tsx';
 import { Loader } from './components/loader/loader.tsx';
 import { RootState } from './store/store.ts';
-import { getUserName } from './ts/storage.ts';
+import { getUserName, nameKey } from './ts/storage.ts';
 import { useAppDispatch, useAppSelector } from './store/hooks.ts';
 import { addNewNote, fetchNotes } from './store/notes-slice-async-actions.ts';
 import { setNameOfUser } from './store/notes-slice.ts';
@@ -20,7 +20,7 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    const name = getUserName();
+    const name = getUserName(nameKey);
 
     if (name) {
       dispatch(setNameOfUser(name));

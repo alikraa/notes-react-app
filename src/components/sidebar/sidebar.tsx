@@ -10,6 +10,7 @@ import {
   setIsFavorite,
   setNameOfUser,
 } from '../../store/notes-slice.ts';
+import { deleteUserName, nameKey } from '../../ts/storage.ts';
 import './sidebar.scss';
 
 interface SidebarProps {
@@ -90,7 +91,7 @@ export function Sidebar({ handleClick }: SidebarProps) {
             className="notes-sidebar__sign-out-button"
             aria-label="Sign Out"
             onClick={() => {
-              localStorage.removeItem('userName');
+              deleteUserName(nameKey);
               dispatch(setNameOfUser(''));
             }}
           >
