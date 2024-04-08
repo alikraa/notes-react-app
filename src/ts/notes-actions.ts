@@ -1,3 +1,4 @@
+import { noteTemplate } from './notes-data.ts';
 import { NoteData } from './types.ts';
 
 export const findNote = (id: string, notes: NoteData[]) =>
@@ -7,3 +8,13 @@ export const getDate = (note: NoteData) =>
   `${new Date(note.noteDate).toLocaleTimeString().slice(0, 5)}, ${new Date(
     note.noteDate
   ).toLocaleDateString()}`;
+
+export const saveNote = (
+  id: string,
+  notes: NoteData[],
+  setNote: (note: NoteData) => void
+) => {
+  const currentNote = findNote(id, notes);
+  const isNote = currentNote ?? noteTemplate;
+  setNote(isNote);
+};

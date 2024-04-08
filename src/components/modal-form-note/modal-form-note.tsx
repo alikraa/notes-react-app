@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
-import { findNote } from '../../ts/notes-actions.ts';
+import { saveNote } from '../../ts/notes-actions.ts';
 import { useAppDispatch, useAppSelector } from '../../store/hooks.ts';
 import { RootState } from '../../store/store.ts';
 import {
@@ -22,9 +22,7 @@ export function ModalFormNote({ handleClick }: ModalWindowAction) {
 
   useEffect(() => {
     if (currentNoteId) {
-      const note = findNote(currentNoteId, notes);
-      const isNote = note ?? noteTemplate;
-      setCurrentNote(isNote);
+      saveNote(currentNoteId, notes, setCurrentNote);
     }
   }, [currentNoteId, notes]);
 
