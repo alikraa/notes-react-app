@@ -6,7 +6,7 @@ import { MdKeyboardBackspace } from 'react-icons/md';
 import { ModalWindow } from '../modal-window/modal-window.tsx';
 import { ModalFormNote } from '../modal-form-note/modal-form-note.tsx';
 import { noteTemplate } from '../../ts/notes-data.ts';
-import { findNote } from '../../ts/notes-actions.ts';
+import { findNote, getDate } from '../../ts/notes-actions.ts';
 import { useAppSelector } from '../../store/hooks.ts';
 import { RootState } from '../../store/store.ts';
 import './notes.scss';
@@ -44,9 +44,7 @@ export function NoteDetails() {
     }
   }, [currentNoteId, navigate, notes]);
 
-  const date = `${new Date(note.noteDate)
-    .toLocaleTimeString()
-    .slice(0, 5)}, ${new Date(note.noteDate).toLocaleDateString()}`;
+  const date = getDate(note);
 
   const openModalForm = () => {
     setOpenForm(!openForm);

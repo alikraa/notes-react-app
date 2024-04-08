@@ -6,6 +6,7 @@ import { setCurrentNoteId } from '../../store/notes-slice.ts';
 import { useAppDispatch } from '../../store/hooks.ts';
 import { setFavorite } from '../../store/notes-slice-async-actions.ts';
 import { NoteData } from '../../ts/types.ts';
+import { getDate } from '../../ts/notes-actions.ts';
 import './notes.scss';
 
 interface NoteProps {
@@ -15,8 +16,7 @@ interface NoteProps {
 
 export function Note({ note, handleClick }: NoteProps) {
   const dispatch = useAppDispatch();
-  const { id, colorName, noteName, noteText, noteDate, isFavorites, isEdit } =
-    note;
+  const { id, colorName, noteName, noteText, isFavorites } = note;
 
   const starIconStyle = useMemo(
     () => ({ className: 'star-icon', size: '1.5em' }),
@@ -27,9 +27,7 @@ export function Note({ note, handleClick }: NoteProps) {
     []
   );
 
-  const date = `${new Date(noteDate)
-    .toLocaleTimeString()
-    .slice(0, 5)}, ${new Date(noteDate).toLocaleDateString()}`;
+  const date = getDate(note);
 
   const setNoteId = () => dispatch(setCurrentNoteId(id));
 
