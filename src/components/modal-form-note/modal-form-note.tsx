@@ -33,6 +33,7 @@ export function ModalFormNote({ handleClick }: ModalWindowAction) {
       ...currentNote,
       noteName: currentNote.noteName,
       noteText: currentNote.noteText,
+      noteDate: new Date(),
     };
 
     dispatch(changeNote({ currentNoteId, updatedNote }));

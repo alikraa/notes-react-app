@@ -72,9 +72,16 @@ export const notesSlice = createSlice({
       const updatedNote = {
         noteName: action.payload.noteName,
         noteText: action.payload.noteText,
+        noteDate: action.payload.noteDate,
       };
 
       state.notes = state.notes.map((item) =>
+        item.noteId === action.payload.noteId
+          ? { ...item, ...updatedNote }
+          : item
+      );
+
+      state.favoriteNotes = state.favoriteNotes.map((item) =>
         item.noteId === action.payload.noteId
           ? { ...item, ...updatedNote }
           : item
