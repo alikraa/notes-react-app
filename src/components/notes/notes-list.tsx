@@ -3,6 +3,7 @@ import { useAppSelector } from '../../store/hooks.ts';
 import { RootState } from '../../store/store.ts';
 import { Note } from './note.tsx';
 import { ModalWindowAction } from '../../ts/types.ts';
+import { sortingByDate } from '../../ts/notes-actions.ts';
 import './notes.scss';
 
 export function NotesList({ handleClick }: ModalWindowAction) {
@@ -13,7 +14,14 @@ export function NotesList({ handleClick }: ModalWindowAction) {
   const [currentList, setCurrentList] = useState(notes);
 
   useEffect(() => {
-    const list = isFavorite ? favoriteNotes : notes;
+    const copyList = [...notes];
+    const copyFavoritesList = [...favoriteNotes];
+
+    const sortingByDateList = sortingByDate(copyList);
+    const sortingByDateFavoritesList = sortingByDate(copyFavoritesList);
+
+    const list = isFavorite ? sortingByDateFavoritesList : sortingByDateList;
+
     setCurrentList(list);
   }, [favoriteNotes, isFavorite, notes]);
 

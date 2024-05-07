@@ -18,3 +18,8 @@ export const saveNote = (
   const isNote = currentNote ?? noteTemplate;
   setNote(isNote);
 };
+
+export const sortingByDate = (list: NoteData[]) =>
+  list.sort(
+    (a, b) => new Date(b.noteDate).getTime() - new Date(a.noteDate).getTime()
+  );
