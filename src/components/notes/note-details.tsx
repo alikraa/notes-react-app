@@ -31,7 +31,7 @@ export function NoteDetails() {
 
   useEffect(() => {
     if (currentNoteId) {
-      saveNote(currentNoteId, notes, setNote)
+      saveNote(currentNoteId, notes, setNote);
     }
   }, [currentNoteId, notes]);
 

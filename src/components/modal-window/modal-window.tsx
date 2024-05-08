@@ -12,6 +12,7 @@ export function ModalWindow({
   children,
 }: ModalWindowProps) {
   const closeIconStyle = useMemo(() => ({ size: '1.5em' }), []);
+
   return (
     <div
       className={hidden ? 'modal-window' : 'modal-window modal-window_active'}

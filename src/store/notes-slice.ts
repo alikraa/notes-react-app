@@ -116,10 +116,7 @@ export const notesSlice = createSlice({
   },
 
   extraReducers(builder) {
-    builder.addCase(fetchNotes.pending, (state) => {
-      state.status = loading;
-      state.error = null;
-    });
+    builder.addCase(fetchNotes.pending, setPending);
     builder.addCase(
       fetchNotes.fulfilled,
       (state, action: PayloadAction<NoteData[]>) => {
