@@ -77,3 +77,102 @@
     border: 2px solid #996dff;
   }
 }
+
+@media (max-width: 1180px) {
+  .notes-sidebar {
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 995px) {
+  .notes-sidebar {
+    position: static;
+    grid-row-start: 1;
+    grid-column: 1 / 4;
+    height: 10vh;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .notes-sidebar__menu-button {
+      display: flex;
+    }
+
+    .notes-sidebar__menu-button_active {
+      position: absolute;
+      right: 20px;
+      z-index: 10;
+
+      transform: rotate(90deg);
+      transition: transform 0.2s ease;
+
+      span {
+        background-color: #fff;
+      }
+    }
+
+    .notes-sidebar__buttons {
+      position: fixed;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 70vh;
+      background-color: rgba(0, 0, 0, 0.8);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .notes-sidebar__buttons_active {
+      transform: translateY(0%);
+    }
+  }
+}
+
+@media (max-width: 796px) {
+  .notes-sidebar {
+    .notes-app-name {
+      font-size: 36px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .notes-sidebar {
+    height: 7vh;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 497px) {
+  .notes-sidebar {
+    .notes-app-name {
+      font-size: 28px;
+    }
+
+    .notes-sidebar__menu-button {
+      width: 25px;
+      height: 18px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .notes-sidebar {
+    .notes-app-name {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .notes-sidebar__menu-button {
+      margin-top: 5px;
+    }
+  }
+}

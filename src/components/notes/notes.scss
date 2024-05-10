@@ -126,3 +126,400 @@
 .message {
   font-size: 35px;
 }
+
+@media (max-width: 1429px) {
+  .notes-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1046px) {
+  .notes-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 995px) {
+  .notes-list,
+  .notes-note-details {
+    padding: 20px;
+    grid-column-start: 1;
+  }
+
+  .notes-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .message {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 829px) {
+  .message {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 796px) {
+  .notes-list {
+    .notes-note {
+      width: 320px;
+      height: 320px;
+      padding: 25px;
+
+      .notes-note__favorite-button,
+      .notes-note__edit-button {
+        right: 20px;
+
+        width: 45px;
+        height: 45px;
+      }
+
+      .notes-note__favorite-button {
+        top: 16px;
+      }
+
+      .notes-note__edit-button {
+        bottom: 16px;
+      }
+
+      .notes-note__name {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+
+      .notes-note__text {
+        font-size: 19px;
+        margin-bottom: 20px;
+      }
+
+      .notes-note__date {
+        left: 25px;
+        bottom: 25px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .notes-note-details {
+    .notes-note-details__actions {
+      margin-bottom: 25px;
+
+      .notes-note-details__back-button,
+      .notes-note-details__edit-button {
+        height: 45px;
+        width: 90px;
+      }
+
+      .arrow-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .pencil-icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .notes-note-details__note {
+      .notes-note-details__note__name {
+        font-size: 32px;
+      }
+
+      .notes-note-details__note__date {
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+
+      .notes-note-details__note__text {
+        font-size: 22px;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .message {
+    font-size: 29px;
+  }
+}
+
+@media (max-width: 740px) {
+  .notes-list {
+    .notes-note {
+      width: 300px;
+      height: 300px;
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .notes-list {
+    .notes-note {
+      width: 280px;
+      height: 280px;
+
+      .notes-note__favorite-button,
+      .notes-note__edit-button {
+        right: 17px;
+
+        width: 42px;
+        height: 42px;
+      }
+
+      .notes-note__name {
+        font-size: 23px;
+        margin-bottom: 12px;
+      }
+
+      .notes-note__text {
+        font-size: 17px;
+        margin-bottom: 12px;
+      }
+
+      .notes-note__date {
+        left: 20px;
+        bottom: 20px;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .notes-list {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 10px;
+
+    .notes-note {
+      width: 350px;
+      height: 350px;
+      padding: 30px;
+
+      .notes-note__favorite-button,
+      .notes-note__edit-button {
+        right: 25px;
+
+        width: 50px;
+        height: 50px;
+      }
+
+      .notes-note__favorite-button {
+        top: 19px;
+      }
+
+      .notes-note__edit-button {
+        bottom: 19px;
+      }
+
+      .notes-note__name {
+        font-size: 28px;
+        margin-bottom: 25px;
+      }
+
+      .notes-note__text {
+        font-size: 20px;
+      }
+
+      .notes-note__date {
+        left: 30px;
+        bottom: 30px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .notes-note-details {
+    padding: 10px;
+
+    .notes-note-details__actions {
+      margin-bottom: 20px;
+    }
+
+    .notes-note-details__note {
+      .notes-note-details__note__name {
+        font-size: 30px;
+      }
+
+      .notes-note-details__note__date {
+        font-size: 16px;
+        margin-bottom: 35px;
+      }
+
+      .notes-note-details__note__text {
+        font-size: 20px;
+        line-height: 1;
+      }
+    }
+  }
+
+  .message {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 497px) {
+  .notes-list {
+    .notes-note {
+      width: 320px;
+      height: 320px;
+      padding: 25px;
+
+      .notes-note__favorite-button,
+      .notes-note__edit-button {
+        right: 20px;
+
+        width: 45px;
+        height: 45px;
+      }
+
+      .notes-note__favorite-button {
+        top: 16px;
+      }
+
+      .notes-note__edit-button {
+        bottom: 16px;
+      }
+
+      .notes-note__name {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+
+      .notes-note__text {
+        font-size: 19px;
+        margin-bottom: 20px;
+      }
+
+      .notes-note__date {
+        left: 25px;
+        bottom: 25px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .notes-note-details {
+    .notes-note-details__actions {
+      margin-bottom: 15px;
+
+      .notes-note-details__back-button,
+      .notes-note-details__edit-button {
+        height: 40px;
+        width: 80px;
+      }
+
+      .arrow-icon {
+        width: 35px;
+        height: 35px;
+      }
+
+      .pencil-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .notes-note-details__note {
+      .notes-note-details__note__name {
+        font-size: 27px;
+      }
+
+      .notes-note-details__note__date {
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+
+      .notes-note-details__note__text {
+        font-size: 17px;
+      }
+    }
+  }
+
+  .message {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 375px) {
+  .notes-list {
+    .notes-note {
+      width: 300px;
+      height: 300px;
+      padding: 20px;
+    }
+  }
+
+  .notes-note-details {
+    .notes-note-details__note {
+      .notes-note-details__note__name {
+        font-size: 24px;
+      }
+
+      .notes-note-details__note__date {
+        font-size: 12px;
+        margin-bottom: 15px;
+      }
+
+      .notes-note-details__note__text {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .message {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 300px) {
+  .notes-list {
+    .notes-note {
+      width: 280px;
+      height: 280px;
+
+      .notes-note__favorite-button,
+      .notes-note__edit-button {
+        right: 17px;
+
+        width: 42px;
+        height: 42px;
+      }
+
+      .notes-note__name {
+        font-size: 23px;
+        margin-bottom: 12px;
+      }
+
+      .notes-note__text {
+        font-size: 17px;
+        margin-bottom: 12px;
+      }
+
+      .notes-note__date {
+        left: 20px;
+        bottom: 20px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .notes-note-details {
+    .notes-note-details__note {
+      .notes-note-details__note__name {
+        font-size: 18px;
+      }
+
+      .notes-note-details__note__date {
+        font-size: 10px;
+        margin-bottom: 15px;
+      }
+
+      .notes-note-details__note__text {
+        font-size: 12px;
+      }
+    }
+  }
+}

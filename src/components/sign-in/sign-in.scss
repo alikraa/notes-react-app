@@ -1,12 +1,9 @@
 @import './../../mixins.scss';
 
 .sign-in {
-  min-height: 75vh;
-  padding: 35px;
-  grid-column: 2 / 4;
+  @include mainContent;
 
   padding-top: 100px;
-
   display: flex;
   justify-content: center;
 
@@ -16,5 +13,32 @@
     width: 220px;
     height: 90px;
     padding: 10px;
+  }
+}
+
+@media (max-width: 995px) {
+  .sign-in {
+    padding-top: 20px;
+    grid-column-start: 1;
+  }
+}
+
+@media (max-width: 796px) {
+  .sign-in {
+    .sign-in__button {
+      width: 180px;
+      height: 80px;
+      font-size: 30px;
+    }
+  }
+}
+
+@media (max-width: 497px) {
+  .sign-in {
+    .sign-in__button {
+      width: 150px;
+      height: 65px;
+      font-size: 27px;
+    }
   }
 }

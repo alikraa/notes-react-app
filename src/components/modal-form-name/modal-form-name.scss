@@ -28,3 +28,29 @@
     margin-left: auto;
   }
 }
+
+@media (max-width: 796px) {
+  .modal-form-name {
+    .modal-form-name__input,
+    .modal-form-name__button {
+      min-height: 55px;
+    }
+
+    .modal-form-name__button {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 497px) {
+  .modal-form-name {
+    .modal-form-name__input,
+    .modal-form-name__button {
+      min-height: 50px;
+    }
+
+    .modal-form-name__button {
+      font-size: 18px;
+    }
+  }
+}
