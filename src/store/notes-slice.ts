@@ -46,7 +46,7 @@ const setError = (state: InitialState, action: PayloadAction<unknown>) => {
   state.error = action.payload;
 };
 
-export const notesSlice = createSlice({
+const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
