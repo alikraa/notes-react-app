@@ -53,6 +53,7 @@ export function NoteDetails() {
       <div className="notes-note-details__actions">
         <button
           type="button"
+          title="Назад"
           aria-label="Back"
           className="notes-note-details__back-button"
           onClick={() => navigate(-1)}
@@ -65,6 +66,7 @@ export function NoteDetails() {
         <button
           className="notes-note-details__edit-button"
           type="button"
+          title="Редактировать"
           aria-label="Edit Note"
           onClick={openModalForm}
         >

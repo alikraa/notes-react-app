@@ -24,7 +24,11 @@ export function ModalFormName({ handleClick }: ModalWindowAction) {
         className="modal-form-name__input"
         onChange={(event) => setName(event.target.value)}
       />
-      <button type="submit" className="modal-form-name__button">
+      <button
+        type="submit"
+        className="modal-form-name__button"
+        title="Сохранить и войти"
+      >
         Сохранить и войти
       </button>
     </form>

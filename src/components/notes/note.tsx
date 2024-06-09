@@ -55,6 +55,7 @@ export function Note({ note, handleClick }: NoteProps) {
         <button
           className="notes-note__favorite-button"
           type="button"
+          title="Убрать из избранного"
           aria-label="Favorite Notes"
           onClick={addToFavorite}
         >
@@ -66,6 +67,7 @@ export function Note({ note, handleClick }: NoteProps) {
         <button
           className="notes-note__favorite-button notes-note__favorite-button_visibility"
           type="button"
+          title="Добавить в избранное"
           aria-label="Favorite Notes"
           onClick={addToFavorite}
         >
@@ -85,6 +87,7 @@ export function Note({ note, handleClick }: NoteProps) {
       <button
         className="notes-note__edit-button"
         type="button"
+        title="Редактировать"
         aria-label="Edit Note"
         onClick={editClick}
       >

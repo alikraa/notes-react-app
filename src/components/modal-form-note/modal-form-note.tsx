@@ -73,12 +73,17 @@ export function ModalFormNote({ handleClick }: ModalWindowAction) {
             }))
           }
         />
-        <button type="submit" className="modal-form-note__form__button">
+        <button
+          type="submit"
+          className="modal-form-note__form__button"
+          title="Сохранить"
+        >
           Сохранить
         </button>
       </form>
       <button
         type="button"
+        title="Удалить заметку"
         className="modal-form-note__form__button delete"
         onClick={deleteNote}
       >

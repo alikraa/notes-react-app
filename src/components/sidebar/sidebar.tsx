@@ -53,6 +53,7 @@ export function Sidebar({ handleClick }: SidebarProps) {
           }
           type="button"
           aria-label="Favorite Notes"
+          title="Избранное"
           onClick={() => {
             dispatch(setIsFavorite());
             dispatch(getFavoriteNotes());
@@ -64,6 +65,7 @@ export function Sidebar({ handleClick }: SidebarProps) {
         </button>
         <button
           type="button"
+          title="Добавить заметку"
           className={
             openColors
               ? 'notes-sidebar__color-button'
@@ -88,6 +90,7 @@ export function Sidebar({ handleClick }: SidebarProps) {
         {userName ? (
           <button
             type="button"
+            title="Выйти"
             className="notes-sidebar__sign-out-button"
             aria-label="Sign Out"
             onClick={() => {

@@ -35,7 +35,11 @@ export function Header() {
             dispatch(setSearchValue(event.target.value.toLowerCase()));
           }}
         />
-        <button type="submit" className="notes-header__form__button">
+        <button
+          type="submit"
+          className="notes-header__form__button"
+          title="Искать!"
+        >
           Искать!
         </button>
       </form>

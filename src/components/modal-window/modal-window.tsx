@@ -28,6 +28,7 @@ export function ModalWindow({
       >
         <button
           type="button"
+          title="Закрыть"
           className="modal-window__button"
           aria-label="Close"
           onClick={handleClick}
